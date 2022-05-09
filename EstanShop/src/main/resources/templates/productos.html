@@ -44,9 +44,9 @@
 					<li class="nav-item"><a class="nav-link text-white"
 						aria-current="page" href="#inicio">Inicio</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
-						href="http://localhost:9000/prod">Productos</a></li>
+						href="#productos">Productos</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
-						href="http://localhost:9000/form">Agregar producto</a></li>
+						href="formulario.html">Agregar producto</a></li>
 				</ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="text"
@@ -56,7 +56,6 @@
 						type="submit">Buscar</button>
 				</form>
 			</div>
-
 		</div>
 	</nav>
 
@@ -97,78 +96,35 @@
 
 
 	<!--CONTENIDO-->
-	<section
-		class="d-flex flex-column justify-content-center align-items-center pt-5 text-center w-50 m-auto"
-		id="estanshop">
-		<h1 class="p-3 fs-2">
-			ESTANCO ONLINE <span class="fs-1 text-danger">"ESTANSHOP"</span>
-		</h1>
-	</section>
-
-	<section class="d-flex flex-column w-50" id="novedades">
-		<h2 class="p-3 fs-4 fw-bold">
-			NOVEDADES
-			</h1>
-	</section>
-
-	<div class="container-fluid d-flex justify-content-center">
-		<div class="row w-100 justify-content-between">
-			<div class="col-12 col-md-4 col-lg-3 pb-3"
-				th:each="producto : ${productList}">
-				<article class="card"></article>
-				<div class="card-body">
-					<div class="d-flex">
-						<img src="imagenes/vape.jpg" th:src="@{/img/vape.jpg}" alt=""
-							width="100" height="100">
-						<div class="ps-3">
-							<h6 class="m-0" th:text="${producto.nombre}">Nombre</h6>
-							<p class="m-0" th:text="${producto.tipoProd}">Tipo producto</p>
-							<p class="m-0" th:text="${producto.precio}">Precio</p>
-						</div>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Dolor ab numquam fuga error mollitia! Enim, voluptatibus. Dolore
-						id cumque tempore officia a! Repudiandae, ab. Cumque, cupiditate
-						repellat. Autem, vitae harum.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<section class="d-flex flex-column w-50" id="ofertas">
-		<h2 class="p-3 fs-4 fw-bold">
-			OFERTAS
-			</h1>
-	</section>
-
-	<div class="container-fluid d-flex justify-content-center">
-		<div class="row w-100 justify-content-between">
-			<div class="col-12 col-md-4 col-lg-3 pb-3"
-				th:each="producto : ${productList}">
-				<article class="card"></article>
-				<div class="card-body">
-					<div class="d-flex">
-						<img src="imagenes/vape.jpg" th:src="@{/img/vape.jpg}" alt=""
-							width="100" height="100">
-						<div class="ps-3">
-							<h6 class="m-0" th:text="${producto.nombre}">Nombre</h6>
-							<p class="m-0">Tipo producto</p>
-							<p class="m-0">Precio</p>
-						</div>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Dolor ab numquam fuga error mollitia! Enim, voluptatibus. Dolore
-						id cumque tempore officia a! Repudiandae, ab. Cumque, cupiditate
-						repellat. Autem, vitae harum.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<table class="w-100 m-3 border border-1">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo de Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad en Stock</th>
+            <th scope="col">Fecha de agregacion</th>
+            <th scope="col">Descuento</th>
+          </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+          <tr th:each="producto : ${productList}">
+            <th th:text="${producto.id}">1</th>
+            <td th:text="${producto.nombre}">Mark</td>
+            <td th:text="${producto.tipoProd}">Otto</td>
+            <td th:text="${producto.precio}">@mdo</td>
+            <td th:text="${producto.cantidadStock}">Mark</td>
+            <td th:text="${producto.fechaAgregacion}">Otto</td>
+            <td th:text="${producto.descuento}">@mdo</td>
+          </tr>
+        </tbody>
+      </table>
 
 
 	<!--FOOTER-->
 	<footer
-		class="w-100  d-flex  align-items-center justify-content-center flex-wrap">
+		class="w-100 d-flex align-items-center justify-content-center flex-wrap fixed-bottom">
 		<div id="icono">
 			<a
 				href="https://www.facebook.com/El-Se%C3%B1or-de-los-Anillos-127844380576947/"><i
