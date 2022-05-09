@@ -1,0 +1,80 @@
+/*===============Propiedades Globales================*/
+
+
+
+body {
+    overflow-x: hidden;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#logo{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*CABECERA*/
+
+.navbar{
+    /*background-image: linear-gradient(to bottom right, rgb(23, 137, 152), yellow);*/
+    background-color: #403a41;
+}
+
+ #lista a, button{
+     font-size: 18px !important;
+     font-weight: 600;
+    
+ }
+
+ #lista a{
+     color:#3f3f3f;
+     
+ }
+
+.carousel-inner {
+    max-height:30rem !important;
+}
+
+/*FOOTER*/
+
+footer {
+    background: #000000;
+    min-height: 100px;;
+}
+footer p{
+    color:#f3f3f3;
+    text-align:center;
+}
+#icono  i {
+    font-size: 26px;
+    padding: 0 8px;
+    color:#f3f3f3;
+}
+
+/*FORMULARIO*/
+
+#contacto{
+    min-height:965px;
+  
+}
+
+
+#contenedor{
+    padding-top: 5%;
+}
+
+#titulo{
+    color: #3f3f3f;
+}
+
+/*AJUSTES*/
+
+@media (max-width: 576px) {
+    #ajuste-foto {
+        width:100% !important;
+    }
+
+    .icono-wrap{
+        flex-wrap:wrap !important;
+        justify-content: center !important;
+        text-align: center;
+    }
+}
+
