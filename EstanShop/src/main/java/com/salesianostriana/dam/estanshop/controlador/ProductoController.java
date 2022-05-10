@@ -59,21 +59,7 @@ public class ProductoController {
 				
 		return "indix";
 	}
-
-	@GetMapping("/form")
-	public String controladorFormulario(Model model) {
-
-		Producto prod = new Producto();
-		model.addAttribute("empleadoForm", prod);
-		return "formulario";
-	}
-
-	@PostMapping("/nuevo/submit")
-	public String procesaFormulario(@ModelAttribute("producto") Producto prod) {
-
-		return "redirect:/";
-	}
-
+	
 	@GetMapping("/prod")
 	public String controladorProductos(Model model) {
 
@@ -110,13 +96,28 @@ public class ProductoController {
 						.cantidadStock(10)
 						.build()
 						);
-		model.addAttribute("productos", productos);
+		model.addAttribute("productos", productoServicio.findAll());
 
 		return "productos";
 	}
 
+	@GetMapping("/form")
+	public String controladorFormulario(Model model) {
+
+		Producto prod = new Producto();
+		model.addAttribute("producto", prod);
+		return "formulario";
+	}
+
+	@PostMapping("/form/submit")
+	public String procesaFormulario(@ModelAttribute("producto") Producto prod) {
+		productoServicio.save(prod);
+		return "redirect:/prod";
+	}
+
+
 	@GetMapping("/conocenos")
-	public String controladorConocenos(Model model) {
+	public String controladorConocenos() {
 
 		return "conocenos";
 	}

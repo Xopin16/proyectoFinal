@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +28,7 @@ public class Producto {
 	
 	private double precio;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaAgregacion;
 	
 	private int cantidadStock;

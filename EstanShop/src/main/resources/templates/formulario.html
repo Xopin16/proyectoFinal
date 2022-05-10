@@ -71,54 +71,50 @@
 				</div>
 			</div>
 
-			<form method="POST" data-netlify="true" action="#">
+			<form method="POST" data-netlify="true" action="#" th:action="@{/form/submit}" th:object="${producto}">
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Indique el nombre del
 						producto</label> <input type="text" class="form-control" id="nombre"
-						name="nombre" placeholder="Ej: Vaped">
+						name="nombre" th:field="*{nombre}" placeholder="Ej: Vaped">
 				</div>
 
 				<div class="mb-3">
 					<label for="tipo" class="form-label">Indique a qué
-						categoría pertenece</label><br> <input type="radio" name="tipo"
-						id="tipo" value="H"><span class="mx-2">Mechero</span><br>
-					<input type="radio" name="tipo" id="tipo" value="M"><span
-						class="mx-2">Tabaco de liar</span><br> <input type="radio"
-						name="tipo" id="tipo" value="P"><span class="mx-2">Vape</span><br>
-					<input type="radio" name="tipo" id="tipo" value="P"><span
+						categoría pertenece</label><br> 
+					<input type="radio" name="tipo" th:field="*{tipoProd}"
+						id="tipo" value="Mechero"><span class="mx-2">Mechero</span><br>
+					<input type="radio" name="tipo" th:field="*{tipoProd}" id="tipo" value="Tabaco de liar"><span
+						class="mx-2">Tabaco de liar</span><br> 
+					<input type="radio"name="tipo" th:field="*{tipoProd}" id="tipo" value="Vaped"><span 
+						class="mx-2">Vaped</span><br>
+					<input type="radio" name="tipo" th:field="*{tipoProd}" id="tipo" value="Otro"><span
 						class="mx-2">Otro</span><br>
 				</div>
 
 				<div class="mb-3">
 					<label for="precio" class="form-label">Indique el precio
 						del producto</label> <input type="text" class="form-control" id="precio"
-						name="precio" placeholder="Ej: 10,50€">
+						name="precio" placeholder="Ej: 10,50€" th:field="*{precio}" >
 				</div>
 
 				<div class="mb-3">
 					<label for="stock" class="form-label">Indique cuantos
 						productos están en stock</label><br> <input type="number"
-						class="form-control" id="stock" name="stock" placeholder="Ej: 15">
+						class="form-control" id="stock" name="stock" th:field="*{cantidadStock}" placeholder="Ej: 15">
 				</div>
 
 				<div class="mb-3">
 					<label for="fechaAgregacion" class="form-label">Indique la
 						fecha de agreacion del producto</label><br> <input type="date"
-						class="form-control" id="fechaAgregacion" name="fechaAgregacion">
-				</div>
-
-				<div class="mb-3">
-					<label for="desc" class="form-label">Indique el porcentaje
-						de descuento</label> <input type="text" class="form-control" id="desc"
-						name="desc" placeholder="Ej: 20%">
+						class="form-control" id="fechaAgregacion" name="fechaAgregacion" th:field="*{fechaAgregacion}">
 				</div>
 
 				<div class="mb-3">
 					<label for="stock" class="form-label">Introduzca una breve
 						descripción del producto</label>
 					<textarea class="form-control" name="descripcion" id="descripcion"
-						rows="4" placeholder="Descripcion"></textarea>
+						rows="4" th:field="*{descripcion}" placeholder="Descripcion"></textarea>
 				</div>
 
 				<div class="mb-3">
