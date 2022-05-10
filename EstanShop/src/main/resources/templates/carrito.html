@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <title>Formulario de registro</title>
+</head>
+
+<body>
+    <header class="container-fluid bg-danger d-flex justify-content-between text-white p-3">
+        <span class="fs-5 text-white fw-bold" id="logo">¡BIENVENIDO A
+            ESTANSHOP, EL MEJOR ESTANCO ONLINE!</span>
+    </header>
+
+  <nav th:replace="~{fragmentos/nav::menu}"></nav>
+  
+    <!--CONTENIDO-->
+
+    <section class="container-fluid p-3 min-vh-100">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Imagen</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Tipo de Producto</th>
+					<th scope="col">Precio Unitario</th>
+                    <th scope="col">Precio final</th>
+					<th scope="col">Cantidad</th>
+					<th scope="col">Fecha de venta</th>
+				</tr>
+			</thead>
+			<tbody th:remove="all-but-first">
+				<tr th:each="producto : ${productos}">
+					<th th:text="${producto.id}">1</th>
+					<td th:text="${producto.nombre}">Mark</td>
+					<td th:text="${producto.tipoProd}">Otto</td>
+					<td th:text="${producto.precio}">@mdo</td>
+					<td th:text="${producto.cantidadStock}">Mark</td>
+					<td th:text="${producto.fechaAgregacion}">Otto</td>
+					<td th:text="${producto.descripcion}">@mdo</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+
+    <!--FOOTER-->
+   	<footer th:replace="~{fragmentos/footer::pie}"></footer>
+</body>
+
+</html>

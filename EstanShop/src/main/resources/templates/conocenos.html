@@ -21,41 +21,8 @@
         <span class="fs-5 text-white fw-bold" id="logo">¡BIENVENIDO A ESTANSHOP, EL MEJOR ESTANCO ONLINE!</span>
     </header>
 
-    <nav class="navbar navbar-expand-md navbar-light p-3 sticky-top"
-		id="lista">
-		<div class="container">
-			<a class="navbar-brand" href="#"> <span
-				class="fs-5 text-danger fw-bold" id="logo">ESTANSHOP</span>
-			</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					<li class="nav-item"><a class="nav-link text-white"
-						aria-current="page" href="http://localhost:9000">Inicio</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
-						href="http://localhost:9000/prod">Productos</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
-						href="http://localhost:9000/form">Agregar producto</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
-						href="http://localhost:9000/conocenos">Conócenos</a></li>
-				</ul>
-				<form class="d-flex">
-					<input class="form-control me-2" type="text"
-						placeholder="¿Qué necesitas?" aria-label="Busqueda">
-					<button
-						class="btn bg-danger btn-primary-outline-success text-white"
-						type="submit">Buscar</button>
-				</form>
-			</div>
-
-		</div>
-	</nav>
+ <nav th:replace="~{fragmentos/nav::menu}"></nav>
+ 
     <!--CONTENIDO-->
     <section class="container-fluid d-flex align-items-center justify-content-center min-vh-100 m-3" id="conocenos">
         <div class="row border border-danger border-3 w-50 fs-4">
@@ -81,15 +48,7 @@
 
 
     <!--FOOTER-->
-    <footer class="w-100 d-flex align-items-center justify-content-center flex-wrap">
-        <div id="icono">
-            <a href="https://www.facebook.com/El-Se%C3%B1or-de-los-Anillos-127844380576947/"><i
-                    class="bi bi-facebook"></i></a>
-            <a href="https://twitter.com/LOTRonPrime"><i class="bi bi-twitter"></i></a>
-            <a href="https://www.instagram.com/lotronprime/?hl=es"><i class="bi bi-instagram"></i></a> <a
-                href="https://www.youtube.com/watch?v=YQDkKhZTM6M"><i class="bi bi-youtube"></i></a>
-        </div>
-    </footer>
+   <footer th:replace="~{fragmentos/footer::pie}"></footer>
 
 
 </body>
