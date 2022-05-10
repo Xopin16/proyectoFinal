@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.estanshop.controller;
+package com.salesianostriana.dam.estanshop.controlador;
 
 import org.springframework.stereotype.Controller;
 
