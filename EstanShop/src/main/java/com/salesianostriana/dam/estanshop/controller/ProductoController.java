@@ -73,4 +73,10 @@ public class ProductoController {
 		return "productos";
 	}
 	
+	@GetMapping ("/conocenos")
+	public String controladorConocenos(Model model) {
+		
+		return "conocenos";
+	}
+	
 }
