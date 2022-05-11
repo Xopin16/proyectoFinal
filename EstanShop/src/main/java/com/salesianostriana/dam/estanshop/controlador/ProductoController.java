@@ -1,17 +1,18 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.estanshop.modelo.Producto;
 import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
-
 @Controller
 public class ProductoController {
 
@@ -20,42 +21,6 @@ public class ProductoController {
 
 	@GetMapping ("/")
 	public String controladorCondicionales (Model model){
-		
-		List<Producto> productos =
-				List.of(
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build()
-						);
-		
-		model.addAttribute("productos", productoServicio.findAll());
 				
 		return "indix";
 	}
@@ -114,7 +79,32 @@ public class ProductoController {
 		productoServicio.save(prod);
 		return "redirect:/prod";
 	}
-
+	
+	@GetMapping("/editar/{id}")
+	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+		
+		Producto pEditar = productoServicio.findById(id);
+		
+		if (pEditar != null) {
+			model.addAttribute("producto", pEditar);
+			return "formulario";
+		} else {
+			return "redirect:/prod";
+		}
+	}
+	
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto prod) {
+		productoServicio.edit(prod);
+		return "redirect:/prod";
+	}
+	
+	@GetMapping("/borrar/{id}")
+	public String borrar(@PathVariable("id") long id) {
+		productoServicio.deleteById(id);
+		return "redirect:/prod";
+	}
+	
 
 	@GetMapping("/conocenos")
 	public String controladorConocenos() {

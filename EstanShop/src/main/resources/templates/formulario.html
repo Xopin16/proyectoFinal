@@ -38,14 +38,14 @@
 				</div>
 			</div>
 
-			<form method="POST" data-netlify="true" action="#" th:action="@{/form/submit}" th:object="${producto}">
+			<form method="POST" data-netlify="true" action="#" th:action="${producto.id != 0} ? @{/editar/submit} : @{/form/submit}" th:object="${producto}">
 
 				<div class="mb-3">
 					<label for="name" class="form-label">Indique el nombre del
 						producto</label> <input type="text" class="form-control" id="nombre"
 						name="nombre" th:field="*{nombre}" placeholder="Ej: Vaped">
 				</div>
-
+				
 				<div class="mb-3">
 					<label for="tipo" class="form-label">Indique a qué
 						categoría pertenece</label><br> 
