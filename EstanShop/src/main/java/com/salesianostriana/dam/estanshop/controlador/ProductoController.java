@@ -83,10 +83,10 @@ public class ProductoController {
 	@GetMapping("/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
-		Producto pEditar = productoServicio.findById(id);
+		Optional<Producto> pEditar= productoServicio.findById(id);
 		
 		if (pEditar != null) {
-			model.addAttribute("producto", pEditar);
+			model.addAttribute("producto", pEditar.get());
 			return "formulario";
 		} else {
 			return "redirect:/prod";

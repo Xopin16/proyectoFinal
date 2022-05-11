@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.estanshop.servicio.base;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,8 +18,8 @@ public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> im
 	}
 
 	@Override
-	public T findById(ID id) {
-		return repositorio.findById(id).orElse(null);
+	public Optional<T> findById(ID id) {
+		return repositorio.findById(id);
 	}
 
 	@Override

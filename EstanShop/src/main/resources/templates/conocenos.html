@@ -17,29 +17,30 @@
 
 <body>
     <!--CABECERA-->
-    <header class="container-fluid bg-danger d-flex justify-content-between text-white p-3">
-        <span class="fs-5 text-white fw-bold" id="logo">¡BIENVENIDO A ESTANSHOP, EL MEJOR ESTANCO ONLINE!</span>
-    </header>
+    <header th:replace="~{fragmentos/head::encabezado}"></header>
 
- <nav th:replace="~{fragmentos/nav::menu}"></nav>
- 
+    <nav th:replace="~{fragmentos/nav::menu}"></nav>
+
     <!--CONTENIDO-->
     <section class="container-fluid d-flex align-items-center justify-content-center min-vh-100 m-3" id="conocenos">
         <div class="row border border-danger border-3 w-50 fs-4">
             <h2 class="text-center border-bottom border-danger p-3">¿QUIÉNES SOMOS?</h2>
 
-            <p class="p-3">Somos una empresa con experiencia en el sector que hace unos años decidió dar el salto online. Hacemos
+            <p class="p-3">Somos una empresa con experiencia en el sector que hace unos años decidió dar el salto
+                online. Hacemos
                 llegar los productos más novedosos del mercado de forma rápida y segura. Vivas en una gran urbe o en una
                 pequeña zona rural queremos que disfrutes de productos de primera calidad.
             </p>
 
-            <p class="p-3">Esta empresa nace con el objetivo ofrecer a los usuarios todos los materiales que pueden necesitar en su
+            <p class="p-3">Esta empresa nace con el objetivo ofrecer a los usuarios todos los materiales que pueden
+                necesitar en su
                 día a día los fumadores. ¿Nuestra intención? Aunar en una sola web desde los accesorios más básicos,
                 como encendedores o ceniceros, hasta cigarrillos electrónicos de primeras marcas, o cachimbas de
                 calidad. Queremos que encuentres todos los artículos que puedas necesitar, queremos convertirnos en tu
                 estanco online.</p>
 
-            <p class="p-3">En cuanto a ti esperamos que disfrutes navegando por la web y encuentres productos útiles que faciliten 
+            <p class="p-3">En cuanto a ti esperamos que disfrutes navegando por la web y encuentres productos útiles que
+                faciliten
                 tu disfrute.</p>
 
             <p class="p-3">¡DISFRUTA DE LA EXPERIENCIA!</p>
@@ -48,7 +49,7 @@
 
 
     <!--FOOTER-->
-   <footer th:replace="~{fragmentos/footer::pie}"></footer>
+    <footer th:replace="~{fragmentos/footer::pie}"></footer>
 
 
 </body>
