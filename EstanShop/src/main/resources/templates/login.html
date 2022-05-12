@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo de Seguridad - Zona Pública</title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-column text-center fw-bold h-100" id="login">
+        <h1>¡BIENVENIDO A ESTANSHOP!</h1>
+        <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()">
+            <label for="username">Nombre de usuario:</label>
+            <div class="mb-3">
+                <input type="text" name="username" id="username" />
+            </div>
+            <label for="password">Contraseña: </label>
+            <div class="mb-3">
+                <input type="password" name="password" id="password" />
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </div>
+        </form>
+            <a th:href="@{private/index}" class="text-decoration-none text-danger" sec:authorize="isAuthenticated()"><span class="fs-4">ENTRAR A LA WEB</span></a>
+            <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
+
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/logout}">Salir</a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

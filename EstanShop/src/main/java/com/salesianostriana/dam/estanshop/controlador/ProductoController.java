@@ -1,9 +1,10 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,55 +19,45 @@ public class ProductoController {
 
 	@Autowired
 	private ProductoServicio productoServicio;
+	
+    @GetMapping("/login")
+    public String login() {
+        return "login.html";
+    }
 
-	@GetMapping ("/")
+    @GetMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login.html";
+    }
+	
+	@GetMapping("/")
+	public String welcome() {
+		return "login";
+	}
+
+
+	@GetMapping("/error")
+	public String error() {
+		return "error";
+	}
+	
+	
+	@GetMapping ("private/index")
 	public String controladorCondicionales (Model model){
 				
 		return "indix";
 	}
 	
-	@GetMapping("/prod")
+	@GetMapping("private/prod")
 	public String controladorProductos(Model model) {
 
-		List<Producto> productos =
-				List.of(
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build(),
-						Producto.builder()
-						.nombre("Vaped 300")
-						.tipoProd("Vaped")
-						.precio(10.50)
-						.cantidadStock(10)
-						.build()
-						);
 		model.addAttribute("productos", productoServicio.findAll());
 
 		return "productos";
 	}
 
-	@GetMapping("/form")
+	@GetMapping("admin/form")
 	public String controladorFormulario(Model model) {
 
 		Producto prod = new Producto();
@@ -80,7 +71,7 @@ public class ProductoController {
 		return "redirect:/prod";
 	}
 	
-	@GetMapping("/editar/{id}")
+	@GetMapping("admin/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
 		Optional<Producto> pEditar= productoServicio.findById(id);

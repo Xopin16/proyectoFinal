@@ -5,11 +5,20 @@
 body {
     overflow-x: hidden;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100vh;
 }
 
 #logo{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+#login{
+     justify-content: center;
+     align-items: center;
+     background-image: linear-gradient(to bottom right, rgb(252, 249, 249), rgb(14, 0, 78)); 
+     font-family: Georgia, 'Times New Roman', Times, serif;
+ }
+
 /*CABECERA*/
 
 .navbar{

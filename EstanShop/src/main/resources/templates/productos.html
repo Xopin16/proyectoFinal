@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<!-- Required meta tags -->
@@ -10,7 +10,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="css/estilos.css">
+	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<title>ESTANSHOP</title>
 </head>
@@ -46,8 +46,8 @@
 					<td th:text="${producto.fechaAgregacion}">Otto</td>
 					<td th:text="${producto.descripcion}">@mdo</td>
 					<td>
-						<a href="#" th:href="@{/editar/{id}(id=${producto.id})}">Editar</a> |
-						<a href="#" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a>
+						<a href="#" th:href="@{/editar/{id}(id=${producto.id})}" sec:authorize="hasRole('ROLE_ADMIN')">Editar</a> |
+						<a href="#" th:href="@{/borrar/{id}(id=${producto.id})}" sec:authorize="hasRole('ROLE_ADMIN')">Borrar</a>
 					</td>
 				</tr>
 			</tbody>
