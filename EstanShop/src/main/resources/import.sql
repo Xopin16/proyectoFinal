@@ -1,0 +1,2 @@
+INSERT INTO PRODUCTO (id, nombre, tipo_prod, precio, cantidad_stock, descripcion) VALUES (NEXTVAL('hibernate_sequence'),'Vape','Vape', '10', '5', 'Vape'); 
+INSERT INTO PRODUCTO (id, nombre, tipo_prod, precio, cantidad_stock, descripcion) VALUES (NEXTVAL('hibernate_sequence'),'Mechero','Mechero', '10', '5', 'Mecheraso'); 

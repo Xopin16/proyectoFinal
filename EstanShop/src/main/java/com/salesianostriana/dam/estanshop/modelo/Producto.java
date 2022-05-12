@@ -28,6 +28,8 @@ public class Producto {
 	
 	private double precio;
 	
+	private String rutaImg;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaAgregacion;
 	
