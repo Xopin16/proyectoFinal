@@ -1,0 +1,56 @@
+El id es serial para todas las clases (Si insertas un profesor es el 1 y si insertas un alumno es el 2).
+
+En los servicios base cambiamos la entidad Profesor por T y
+el tipo de dato long del id por ID.
+
+LDN
+
+- No puede comprar un prod del que no hay existencia
+
+ASOCIACIONES
+
+prod -> 
+lineaV ->
+Venta ->
+
+
+DOCUMENTACION
+
+- Diagrama de clases.
+- Descripcion de funcionalidades/Historias de usuario.
+
+
+PLUGIN 
+
+eclipse wtp
+help-eclipsemarketplace-eclwebdvtool/thymeleaf/jbox.tools/hibernate.tools.
+
+
+resource-ficherotexto-import.sql
+
+INSERT INTO PROFESOR(id, atributos) VALUES (NEXTVAL('hibernate_sequence'), 'Pepe', 'Perez')
+
+create-drop
+
+Consola H2/
+
+url : puede dar conflicto meterlo en gitignore
+
+img:  la ruta la metemos en el import
+
+cambiar ruta por la de nuetsra url
+
+al pgadmin de h2 llegamos con la ruta que nos da luismi
+
+1 proyecto login por defecto
+2 proyecto login personalizado
+
+
+crear clase usuario
+
+hay que modificar 2 lineas (32 y 33)
+se puede cambiar el nombre de la clase security
+preguntar si como hago para registrarse antes de entrar
+
+
+recordad security y h2
