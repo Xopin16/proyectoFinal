@@ -68,10 +68,10 @@ public class ProductoController {
 	@PostMapping("/form/submit")
 	public String procesaFormulario(@ModelAttribute("producto") Producto prod) {
 		productoServicio.save(prod);
-		return "redirect:/prod";
+		return "redirect:/private/prod";
 	}
 	
-	@GetMapping("admin/editar/{id}")
+	@GetMapping("/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		
 		Optional<Producto> pEditar= productoServicio.findById(id);
@@ -80,14 +80,14 @@ public class ProductoController {
 			model.addAttribute("producto", pEditar.get());
 			return "formulario";
 		} else {
-			return "redirect:/prod";
+			return "redirect:/private/prod";
 		}
 	}
 	
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto prod) {
 		productoServicio.edit(prod);
-		return "redirect:/prod";
+		return "redirect:/private/prod";
 	}
 	
 	@GetMapping("/borrar/{id}")

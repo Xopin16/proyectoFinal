@@ -45,9 +45,9 @@
 					<td th:text="${producto.cantidadStock}">Mark</td>
 					<td th:text="${producto.fechaAgregacion}">Otto</td>
 					<td th:text="${producto.descripcion}">@mdo</td>
-					<td>
-						<a href="#" th:href="@{/editar/{id}(id=${producto.id})}" sec:authorize="hasRole('ROLE_ADMIN')">Editar</a> |
-						<a href="#" th:href="@{/borrar/{id}(id=${producto.id})}" sec:authorize="hasRole('ROLE_ADMIN')">Borrar</a>
+					<td sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" th:href="@{/editar/{id}(id=${producto.id})}">Editar</a> |
+						<a href="#" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a>
 					</td>
 				</tr>
 			</tbody>

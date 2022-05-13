@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
 					<li class="nav-item"><a class="nav-link text-white"
 						href="producto.html" th:href="@{/private/prod}">Productos</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
-						href="formulario.html" th:href="@{/admin/form}">Agregar producto</a></li>
+						href="formulario.html" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/form}">Agregar producto</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
 						href="carrito.html" th:href="@{/cesta}">Carrito</a></li>
 					<li class="nav-item"><a class="nav-link text-white"

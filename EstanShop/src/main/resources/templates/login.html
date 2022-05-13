@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
     <div class="container-fluid d-flex flex-column text-center fw-bold h-100" id="login">
         <h1>¡BIENVENIDO A ESTANSHOP!</h1>
         <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()">
