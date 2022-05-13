@@ -93,7 +93,7 @@ public class ProductoController {
 	@GetMapping("/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		productoServicio.deleteById(id);
-		return "redirect:/prod";
+		return "redirect:/private/prod";
 	}
 	
 

@@ -15,7 +15,7 @@ body {
 #login{
      justify-content: center;
      align-items: center;
-     background-image: linear-gradient(to bottom right, rgb(252, 249, 249), rgb(14, 0, 78)); 
+     background-image: linear-gradient(to bottom right, rgb(252, 249, 249), rgb(206, 51, 51)); 
      font-family: Georgia, 'Times New Roman', Times, serif;
  }
 

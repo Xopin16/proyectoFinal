@@ -54,3 +54,11 @@ preguntar si como hago para registrarse antes de entrar
 
 
 recordad security y h2
+------------------------------------------------------------
+
+La literatura de las consultas está en lmlopezmagana/bd-2021.
+
+Para buscar por nombre ponemos findByAtributo.
+
+Pom-> 2.6.7 -> 2.6.0
+Update y force Update.

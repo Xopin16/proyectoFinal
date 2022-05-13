@@ -46,6 +46,9 @@
 					<li class="nav-item"><a class="nav-link text-white"
 						href="conocenos.html" th:href="@{/conocenos}">Conócenos</a></li>
 				</ul>
+				<button class="btn btn-danger" sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}" class="text-decoration-none text-white">Salir</a>
+				</button>
 			</div>
 
 		</div>

@@ -35,9 +35,9 @@
             <a th:href="@{private/index}" class="text-decoration-none text-danger" sec:authorize="isAuthenticated()"><span class="fs-4">ENTRAR A LA WEB</span></a>
             <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
 
-            <div sec:authorize="isAuthenticated()">
-                <a th:href="@{/logout}">Salir</a>
-        </div>
+				<button class="btn btn-dark" sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}" class="text-decoration-none fw-bold text-white">Salir</a>
+				</button>
     </div>
 
 
