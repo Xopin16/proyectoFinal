@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.estanshop.modelo.Producto;
 import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
@@ -36,7 +37,12 @@ public class ProductoController {
 		return "login";
 	}
 
-
+	@GetMapping("/buscar")
+	public String buscar(Model model, @RequestParam String nombre) {
+		model.addAttribute("productos", productoServicio.buscarPorNombre(nombre));
+		return "productos";
+	}
+	
 	@GetMapping("/error")
 	public String error() {
 		return "error";
