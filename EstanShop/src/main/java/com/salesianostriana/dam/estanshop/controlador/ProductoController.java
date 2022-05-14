@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
 @Controller
 public class ProductoController {
 
+	private static final int productosAleatorios = 8;
+	
 	@Autowired
 	private ProductoServicio productoServicio;
 	
@@ -49,9 +52,22 @@ public class ProductoController {
 	}
 	
 	
-	@GetMapping ("private/index")
-	public String controladorCondicionales (Model model){
-				
+//	@GetMapping ("private/index")
+//	public String controladorCondicionales (Model model){
+//				
+//		return "indix";
+//	}
+	@GetMapping("private/index")
+	public String index(Model model) {
+
+		model.addAttribute("productos", productoServicio.findAll());
+
+		List<Producto> productos;
+
+		productos = productoServicio.mostrarProductosAleatorios(productosAleatorios);
+
+		model.addAttribute("productos", productos);
+
 		return "indix";
 	}
 	
