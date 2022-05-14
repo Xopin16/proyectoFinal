@@ -111,7 +111,6 @@ public class ProductoController {
 		productoServicio.deleteById(id);
 		return "redirect:/private/prod";
 	}
-	
 
 	@GetMapping("/conocenos")
 	public String controladorConocenos() {
