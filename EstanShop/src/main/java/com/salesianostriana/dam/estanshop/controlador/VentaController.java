@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class VentaController {
 	
-	@GetMapping ("/cesta")
+	@GetMapping ("private/cesta")
 	public String controladorCarrito() {
 		return "carrito";
 	}

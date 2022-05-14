@@ -37,6 +37,18 @@ public class UsuarioRepo {
 				.password("87654321")
 				.role("USER")
 				.build()
+				,
+				Usuario.builder()
+				.username("admin")
+				.password("admin")
+				.role("ADMIN")
+				.build()
+				,
+				Usuario.builder()
+				.username("user")
+				.password("user")
+				.role("USER")
+				.build()
 				
 				
 				);

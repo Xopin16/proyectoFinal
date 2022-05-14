@@ -19,7 +19,7 @@ import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
 @Controller
 public class ProductoController {
 
-	private static final int productosAleatorios = 8;
+	private static final int productosAleatorios = 12;
 	
 	@Autowired
 	private ProductoServicio productoServicio;
@@ -51,12 +51,6 @@ public class ProductoController {
 		return "error";
 	}
 	
-	
-//	@GetMapping ("private/index")
-//	public String controladorCondicionales (Model model){
-//				
-//		return "indix";
-//	}
 	@GetMapping("private/index")
 	public String index(Model model) {
 

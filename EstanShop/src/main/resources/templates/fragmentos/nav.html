@@ -42,13 +42,12 @@
 					<li class="nav-item"><a class="nav-link text-white"
 						href="formulario.html" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/form}">Agregar producto</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
-						href="carrito.html" th:href="@{/cesta}">Carrito</a></li>
+						href="carrito.html" th:href="@{/private/cesta}">Carrito</a></li>
 					<li class="nav-item"><a class="nav-link text-white"
 						href="conocenos.html" th:href="@{/conocenos}">Conócenos</a></li>
 				</ul>
-				<button class="btn btn-danger" sec:authorize="isAuthenticated()">
-					<a th:href="@{/logout}" class="text-decoration-none text-white">Salir</a>
-				</button>
+				<a th:href="@{/logout}" class="text-decoration-none text-white">
+				<button class="btn btn-danger" sec:authorize="isAuthenticated()">Salir</button></a>
 			</div>
 
 		</div>

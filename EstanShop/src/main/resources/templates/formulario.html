@@ -36,6 +36,13 @@
 
 			<form method="POST" data-netlify="true" action="#" th:action="${producto.id != 0} ? @{/editar/submit} : @{/form/submit}" th:object="${producto}">
 			<input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
+			
+                <div class="mb-3">
+                    <label for="name" class="form-label">Indique la ruta de la imagen</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{rutaImg}"
+                        placeholder="http://...">
+                </div>
+			
 				<div class="mb-3">
 					<label for="name" class="form-label">Indique el nombre del
 						producto</label> <input type="text" class="form-control" id="nombre"
@@ -86,6 +93,7 @@
 			</form>
 		</div>
 	</section>
+	<footer th:replace="~{fragmentos/footer::pie}"></footer>
 </body>
 
 </html>

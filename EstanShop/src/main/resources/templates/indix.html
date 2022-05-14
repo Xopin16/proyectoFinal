@@ -84,7 +84,8 @@
 				<article class="card"></article>
 				<div class="card-body">
 					<div class="d-flex">
-						<img src="imagenes/vape.jpg" th:src="@{/img/vape.jpg}" alt=""
+						<img th:src="${not (#strings.isEmpty(producto.rutaImg))} 
+								              ? ${producto.rutaImg} : 'http://placehold.it/48x48'" alt=""
 							width="100" height="100">
 						<div class="ps-3">
 							<h6 class="m-0" th:text="${producto.nombre}">Nombre</h6>
@@ -92,10 +93,7 @@
 							<p class="m-0" th:text="${producto.precio}">Precio</p>
 						</div>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Dolor ab numquam fuga error mollitia! Enim, voluptatibus. Dolore
-						id cumque tempore officia a! Repudiandae, ab. Cumque, cupiditate
-						repellat. Autem, vitae harum.</p>
+					<p th:text="${producto.descripcion}">Descripcion</p>
 				</div>
 			</div>
 		</div>
