@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.estanshop.seguridad;
+package com.salesianostriana.dam.estanshop.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

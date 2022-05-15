@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,32 +21,11 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoServicio productoServicio;
-	
-    @GetMapping("/login")
-    public String login() {
-        return "login.html";
-    }
-
-    @GetMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login.html";
-    }
-	
-	@GetMapping("/")
-	public String welcome() {
-		return "login";
-	}
 
 	@GetMapping("/buscar")
 	public String buscar(Model model, @RequestParam String nombre) {
 		model.addAttribute("productos", productoServicio.buscarPorNombre(nombre));
 		return "productos";
-	}
-	
-	@GetMapping("/error")
-	public String error() {
-		return "error";
 	}
 	
 	@GetMapping("private/index")

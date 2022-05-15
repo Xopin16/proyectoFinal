@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.estanshop.seguridad;
+package com.salesianostriana.dam.estanshop.repositorio;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +7,8 @@ import java.util.Optional;
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Repository;
+
+import com.salesianostriana.dam.estanshop.modelo.Usuario;
 
 @Repository
 public class UsuarioRepo {
