@@ -41,7 +41,7 @@
                         <button type="submit" class="btn btn-danger fw-bold position mt-3">Iniciar sesion</button>
                     </div>
                 </form>
-                <a th:href="@{private/index}" class="text-decoration-none text-danger p-3" sec:authorize="isAuthenticated()"><span class="fs-4">ENTRAR A LA WEB</span></a><br>
+                <a th:href="@{private/prod}" class="text-decoration-none text-danger p-3" sec:authorize="isAuthenticated()"><span class="fs-4">ENTRAR AL CATÁLOGO DE PRODUCTOS</span></a><br>
                 <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
             </div>
         </div>
