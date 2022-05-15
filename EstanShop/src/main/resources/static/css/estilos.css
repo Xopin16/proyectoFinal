@@ -8,6 +8,11 @@ body {
     height: 100vh;
 }
 
+@font-face{
+    font-family: 'miFuente';
+    src: url(/font/aAbsoluteEmpire.ttf);
+}
+
 #logo{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -21,9 +26,17 @@ body {
 
 /*CABECERA*/
 
+header{
+    background-image: url(/img/ESTANSHOP.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'miFuente','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .navbar{
     /*background-image: linear-gradient(to bottom right, rgb(23, 137, 152), yellow);*/
     background-color: #403a41;
+    font-family: 'miFuente',Verdana, Geneva, Tahoma, sans-serif;
 }
 
  #lista a, button{
@@ -75,15 +88,11 @@ footer p{
 
 /*AJUSTES*/
 
-@media (max-width: 576px) {
-    #ajuste-foto {
-        width:100% !important;
+@media (max-width: 800px) {
+    #pie{
+        flex-direction: column;
     }
 
-    .icono-wrap{
-        flex-wrap:wrap !important;
-        justify-content: center !important;
-        text-align: center;
-    }
+
 }
 

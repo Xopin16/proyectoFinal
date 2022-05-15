@@ -27,7 +27,7 @@
         <h3 sec:authorize="isAuthenticated()" class="mb-3">¡DISFRUTA DE LA EXPERIENCIA!</h3>
         <div class="row border border-2 border-dark rounded text-white bg-dark fw-bold m-3 p-3" id="log">
             <div class="form col-md-12 center-block">
-                <h1 class="border-bottom border-2 border-danger">ESTANSHOP</h1>
+                <h1 class="border-bottom border-2">ESTANSHOP</h1>
                 <form method="POST" th:action="@{/login}" class="text-start mt-5" sec:authorize="!isAuthenticated()">
                     <label for="username">Username</label>
                     <div class="mb-3">
@@ -41,7 +41,7 @@
                         <button type="submit" class="btn btn-danger fw-bold position mt-3">Iniciar sesion</button>
                     </div>
                 </form>
-                <a th:href="@{private/prod}" class="text-decoration-none text-danger p-3" sec:authorize="isAuthenticated()"><span class="fs-4">ENTRAR AL CATÁLOGO DE PRODUCTOS</span></a><br>
+                <a th:href="@{private/prod}" class="text-decoration-none text-danger p-3" sec:authorize="isAuthenticated()"><span class="fs-4">VISITAR CATÁLOGO</span></a><br>
                 <p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
             </div>
         </div>
