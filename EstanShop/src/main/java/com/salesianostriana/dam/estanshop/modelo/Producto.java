@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.estanshop.modelo;
 
 import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -36,5 +37,6 @@ public class Producto {
 	private int cantidadStock;
 	
 	private String descripcion;
+	
 	
 }

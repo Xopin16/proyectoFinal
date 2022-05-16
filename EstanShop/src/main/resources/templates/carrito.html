@@ -29,36 +29,45 @@
 
 	<!--CONTENIDO-->
 	<main>
-		<section class="container-fluid p-3 min-vh-100">
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th scope="col">Imagen</th>
-						<th scope="col">Nombre</th>
-						<th scope="col">Tipo de Producto</th>
-						<th scope="col">Precio Unitario</th>
-						<th scope="col">Precio final</th>
-						<th scope="col">Cantidad</th>
-						<th scope="col">Fecha de venta</th>
-					</tr>
-				</thead>
-				<tbody th:remove="all-but-first">
-					<tr th:each="producto : ${productos}">
-						<th th:text="${producto.id}">1</th>
-						<td th:text="${producto.nombre}">Mark</td>
-						<td th:text="${producto.tipoProd}">Otto</td>
-						<td th:text="${producto.precio}">@mdo</td>
-						<td th:text="${producto.cantidadStock}">Mark</td>
-						<td th:text="${producto.fechaAgregacion}">Otto</td>
-						<td th:text="${producto.descripcion}">@mdo</td>
-					</tr>
-				</tbody>
-			</table>
+		<section class="container min-vh-100 p-3">
+			<div class="col-md-offset-1 col-md-10">
+				<table class="table table-hover text-center">
+					<thead>
+						<tr>
+							<th scope="col">Imagen</th>
+							<th scope="col">Producto</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Subtotal</th>
+							<th scope="col">Borrar</th>
+						</tr>
+					</thead>
+					<tbody th:remove="all-but-first">
+						<tr th:each="element : ${productos.entrySet()}">
+							<td><img width="100" height="100"
+								th:src="${not (#strings.isEmpty(element.key.rutaImg))} 
+                             ? ${element.key.rutaImg} : 'http://placehold.it/48x48'"
+								class="img-responsive" alt="imagen del producto" /></td>
+							<td th:text="${element.key.nombre}">Mark</td>
+							<td th:text="${element.key.precio + '€'}">Otto</td>
+							<td th:text="${element.value}">@mdo</td>
+							<td th:text="${element.key.precio * element.value + '€'}">Mark</td>
+							<td><a href="#" th:href="@{/borrarProducto/{id}(id=${element.key.id})}"><img
+									alt="editar" th:src="@{/img/borrar.png}"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div
+					class="d-flex justify-content-between fs-5 fw-bold px-3 border-bottom">
+					<p>
+						Precio total = <span th:text="${total_carrito + '€'}">3€</span>
+					</p>
+					<a th:href="@{/private/prod}"><button class="btn btn-dark">Seguir
+							comprando</button></a>
+				</div>
+			</div>
 		</section>
 	</main>
-
-
-
 
 	<!--FOOTER-->
 	<footer th:replace="~{fragmentos/footer::pie}"></footer>

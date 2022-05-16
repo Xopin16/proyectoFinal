@@ -41,7 +41,7 @@
 			</form>
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10">
-					<table class="table table-hover">
+					<table class="table table-hover text-center">
 						<thead>
 							<tr>
 								<th scope="col">Imagen</th>
@@ -50,6 +50,7 @@
 								<th scope="col">Precio</th>
 								<th scope="col">Cantidad en Stock</th>
 								<th scope="col">Fecha de agregacion</th>
+								<th scope="col">Comprar</th>
 								<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Operaciones</th>
 							</tr>
 						</thead>
@@ -65,15 +66,19 @@
 								<td th:text="${producto.precio + '€'}">@mdo</td>
 								<td th:text="${producto.cantidadStock}">Mark</td>
 								<td th:text="${producto.fechaAgregacion}">Otto</td>
+								<td class="text-center"><a href="#"
+									th:href="@{/productoACarrito/{id}(id=${producto.id})}"><img
+										alt="borrar" th:src="@{/img/carrito.png}"></a></td>
 								<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center"><a
 									href="#" th:href="@{/editar/{id}(id=${producto.id})}"><img
 										alt="editar" th:src="@{/img/editar.png}"></a> <a href="#"
 									th:href="@{/borrar/{id}(id=${producto.id})}"><img
-										alt="borrar" th:src="@{/img/borrar.png}"></a></td>
+										alt="borrar" th:src="@{/img/borrar.png}"></a>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+			</div>
 		</section>
 	</main>
 
