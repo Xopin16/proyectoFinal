@@ -31,6 +31,7 @@ public class Venta {
 	
 	private double precioFinal;
 	
+	
 	@Builder.Default
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

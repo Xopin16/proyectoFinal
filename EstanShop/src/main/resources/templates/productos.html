@@ -54,7 +54,7 @@
 								<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Operaciones</th>
 							</tr>
 						</thead>
-						<tbody th:remove="all-but-first">
+						<tbody>
 							<tr th:each="producto : ${productos}">
 								<!--<th th:text="${producto.id}">1</th>-->
 								<td><img width="100" height="100"
