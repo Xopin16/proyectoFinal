@@ -26,8 +26,6 @@ public class LineaVenta {
 	
 	private double precioFinal; 
 	
-	private double descuento;
-	
 	@ManyToOne
 	private Venta venta;
 	

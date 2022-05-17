@@ -65,8 +65,6 @@ function comprobarFecha(){
         let fechaDate = fecha.valueAsDate;
 		let hoy = new Date();
 
-        resultado = fechaDate.getYear() && fechaDate.getMonth() && fechaDate.getDate()>=hoy.getYear()&&hoy.getMonth()&&hoy.getDate();
-
         resultado = fechaDate.getYear()>=hoy.getYear() && fechaDate.getMonth()>=hoy.getMonth() && fechaDate.getDate()>=hoy.getDate();
     }
 

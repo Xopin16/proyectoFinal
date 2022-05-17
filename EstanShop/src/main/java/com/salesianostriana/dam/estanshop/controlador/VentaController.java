@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
-import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.salesianostriana.dam.estanshop.modelo.Producto;
 import com.salesianostriana.dam.estanshop.servicio.CarritoServicio;
 import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
+import com.salesianostriana.dam.estanshop.servicio.VentaServicio;
 
 @Controller
 public class VentaController {
@@ -20,7 +21,11 @@ public class VentaController {
 	private CarritoServicio carritoServicio;
 	
 	@Autowired
+	private VentaServicio ventaServicio;
+	
+	@Autowired
 	private ProductoServicio productoServicio;
+	
 	
 	@GetMapping ("private/cesta")
 	public String controladorCarrito(Model model) {
@@ -30,33 +35,52 @@ public class VentaController {
 	}
 	
 	 @GetMapping ("/productoACarrito/{id}")
-	    public String productoACarrito (@PathVariable("id") Long id, Model model) {
-	    	
-	    	carritoServicio.addProducto(productoServicio.findById(id).orElse(null));
-	    	    		 	
-	    	return "redirect:/private/cesta";
+	    public String productoACarrito (@PathVariable("id") long id, Model model) {
+				 
+		 	Optional<Producto> aCarrito = productoServicio.findById(id);
+		 	
+		 	if(aCarrito != null) {
+		 		carritoServicio.addProducto(aCarrito.get());
+		 		return "redirect:/private/cesta";
+		 	}else {
+		    	return "productos";
+		 	}		 	
+
 	    }
 	    
 	    @GetMapping("/borrarProducto/{id}")
-	    public String removeProductFromCart(@PathVariable("id") Long id) {
-	        
-	    	carritoServicio.removeProducto(productoServicio.findById(id).orElse(null));
-	        return "redirect:/private/cesta";
+	    public String removeProductFromCart(@PathVariable("id") long id) {
+	        	    	
+	    	Optional<Producto> borrarProd = productoServicio.findById(id);
+	    	
+	    	if(borrarProd != null) {
+	    		carritoServicio.removeProducto(borrarProd.get());
+	    		return "redirect:/private/cesta";
+	    	}else {
+		        return "carrito";
+
+	    	}
 	    }
 	    
-	    @ModelAttribute("total_carrito")
-	    public Double totalCarrito () {
-	    	
-	    	Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
-	    	double total=0.0;
-	    	if (carrito !=null) {
-	        	for (Producto p: carrito.keySet()) {
-	        		total+=p.getPrecio()*carrito.get(p);
-	        	}
-	        	return total;
-	    	}
-	    	
-	    	return 0.0;
+	    @ModelAttribute ("total_carrito")
+	    public Double calcularPrecioFinal() {
+	    	return carritoServicio.totalCarrito();
 	    }
+	    
+//	    @GetMapping ("/checkout/{id}")
+//	    public String checkoutCarrito(@PathVariable("id") Long id, Model model) {
+//	    	
+//	    	Optional<Producto> checkoutVenta = productoServicio.findById(id);
+//
+//		 	if(checkoutVenta != null) {
+//		 		ventaServicio.checkoutVenta(carritoServicio.getProductsInCart());
+//		 		return "carrito";
+//		 	}else {
+//		 		return "redirect:/private/cesta";
+//		 	}
+//	    }
+	    
+
+	    
 	
 }

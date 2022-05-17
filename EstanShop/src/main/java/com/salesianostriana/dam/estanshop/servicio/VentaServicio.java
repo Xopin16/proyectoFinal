@@ -3,13 +3,15 @@ package com.salesianostriana.dam.estanshop.servicio;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.salesianostriana.dam.estanshop.controlador.VentaController;
+import com.salesianostriana.dam.estanshop.modelo.LineaVenta;
 import com.salesianostriana.dam.estanshop.modelo.Producto;
 import com.salesianostriana.dam.estanshop.modelo.Venta;
 import com.salesianostriana.dam.estanshop.repositorio.VentaRepository;
 import com.salesianostriana.dam.estanshop.servicio.base.ServicioBaseImpl;
 
+@Service
 public class VentaServicio extends 
 ServicioBaseImpl<Venta, Long, VentaRepository>{
 	
@@ -17,10 +19,10 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 	private CarritoServicio carritoServicio;
 	
 	@Autowired
-	private VentaController ventaController;
+	private VentaRepository ventaRepository;
 	
 	public double aplicarDescuento2Iguales() {
-		double total=ventaController.totalCarrito();
+		double total=carritoServicio.totalCarrito();
 		double desc = 10.0;
 		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
 		
@@ -36,7 +38,7 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 	}
 	
 	public double aplicarDescuentoCompraGrande() {
-		double total=ventaController.totalCarrito();
+		double total=carritoServicio.totalCarrito();
 		double desc = 30.0;
 		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
 		
@@ -62,4 +64,13 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
     	}
 	}
 	
+//	public void checkoutVenta(Map<Producto, Integer> carrito) {
+//		Venta venta = ventaRepository.save(new Venta());
+//		for (Producto p : carrito.keySet()) {
+//			
+////			LineaVenta lv = new LineaVenta(p.getId(), p, carrito.get(p), carritoServicio.totalCarrito(), venta);
+//		}
+//		carrito.clear();
+//	}
+//	
 }

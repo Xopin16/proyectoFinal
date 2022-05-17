@@ -62,3 +62,22 @@ Para buscar por nombre ponemos findByAtributo.
 
 Pom-> 2.6.7 -> 2.6.0
 Update y force Update.
+
+-------------------------------------------------------------
+CHECKOUT
+-------------------------------------------------------------
+Agregar a linea venta el dto y le metodo subtotal.
+
+SERVICIO VENTA -> map <Producto, Integer>
+	1 instancia de venta por carrito.
+	ventaloquesea.save(venta);
+	Venta -> fecha de venta, username
+	Tantas lineas de venta como productos diferentes
+		Bucle sobre el MAP y salvar una linea de venta
+		por producto.
+		limpiar el carrito.
+-------------------------------------------------------------
+INSERT INTO CURSO (id, nombre) VALUES (1, '1º DAM');
+INSERT INTO ALUMNO (id, nombre, apellidos, curso_id) VALUES (1, 'PEPE', 'PEREZ', 1);
+
+ALTER SEQUENCE hibernate_sequence RESTART WITH 1000;

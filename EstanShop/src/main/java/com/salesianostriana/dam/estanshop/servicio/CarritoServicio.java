@@ -3,7 +3,6 @@ package com.salesianostriana.dam.estanshop.servicio;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -46,11 +45,23 @@ public class CarritoServicio {
             }
         }
 	}
-	
+
 
     public Map<Producto, Integer> getProductsInCart() {
         return Collections.unmodifiableMap(products);
     }
 	
-    
+	public double totalCarrito () {
+    	
+    	Map <Producto,Integer> carrito= getProductsInCart();
+    	double total=0.0;
+    	if (carrito !=null) {
+        	for (Producto p: carrito.keySet()) {
+        		total+=p.getPrecio()*carrito.get(p);
+        	}
+        	return total;
+    	}
+    	
+    	return 0.0;
+    }
 }
