@@ -65,19 +65,37 @@ public class VentaController {
 	    @ModelAttribute ("total_carrito")
 	    public Double calcularPrecioFinal() {
 	    	return carritoServicio.totalCarrito();
+	    	
 	    }
 	    
+	    @ModelAttribute ("compra_fallida")
+	    public String mostrarCompraFallida(Model model) {
+	    	model.addAttribute("fallo", ventaServicio.impedirCompra());
+	    	
+	    	return "productos";
+	    }
+
+	    
 //	    @GetMapping ("/checkout/{id}")
-//	    public String checkoutCarrito(@PathVariable("id") Long id, Model model) {
+//	    public String checkoutCarrito(@PathVariable("id") Map<Producto, Integer> carrito,  Model model) {
 //	    	
-//	    	Optional<Producto> checkoutVenta = productoServicio.findById(id);
+//	    	for (Producto p: carrito.keySet()) {
+//	    		
+//	    	LineaVenta lv =	LineaVenta.builder()
+//						.producto(p)
+//						.cantidad(carrito.get(p))
+//						.venta(Venta.builder()
+//							    	.fechaVenta(LocalDate.now())
+//							    	.precioFinal(carritoServicio.totalCarrito())
+//							    	.build())
+//						.build();
+//	    	lineaVentaServicio.save(lv);
 //
-//		 	if(checkoutVenta != null) {
-//		 		ventaServicio.checkoutVenta(carritoServicio.getProductsInCart());
-//		 		return "carrito";
-//		 	}else {
-//		 		return "redirect:/private/cesta";
-//		 	}
+//			}
+//	    	
+//	    	carrito.clear();
+//	    	
+//	    	return "redirect:/private/cesta";
 //	    }
 	    
 

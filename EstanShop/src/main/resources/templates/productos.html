@@ -68,7 +68,7 @@
 								<td th:text="${producto.fechaAgregacion}">Otto</td>
 								<td class="text-center"><a href="#"
 									th:href="@{/productoACarrito/{id}(id=${producto.id})}"><img
-										alt="borrar" th:src="@{/img/carrito.png}"></a></td>
+										alt="agregar" th:src="@{/img/carrito.png}"></a></td>
 								<td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center"><a
 									href="#" th:href="@{/editar/{id}(id=${producto.id})}"><img
 										alt="editar" th:src="@{/img/editar.png}"></a> <a href="#"

@@ -21,37 +21,62 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 	@Autowired
 	private VentaRepository ventaRepository;
 	
-	public double aplicarDescuento2Iguales() {
-		double total=carritoServicio.totalCarrito();
-		double desc = 10.0;
-		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
-		
-		if(carrito!=null) {
-        	for (Producto p: carrito.keySet()) {
-        		if(carrito.get(p)>1)
-        		total+=(p.getPrecio()*carrito.get(p))-desc/100;
-        	}
-        	return total;
-		}
-		
-		return 0.0;
-	}
+//	public double aplicarDescuento2Iguales() {
+//		double total=carritoServicio.totalCarrito();
+//		double desc = 10.0;
+//		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
+//		
+//		if(carrito!=null) {
+//        	for (Producto p: carrito.keySet()) {
+//        		if(carrito.get(p)>1)
+//        		total+=(p.getPrecio()*carrito.get(p))-desc/100;
+//        	}
+//        	return total;
+//		}
+//		
+//		return 0.0;
+//	}
+//	
+//	public double aplicarDescuentoCompraGrande() {
+//		double total=carritoServicio.totalCarrito();
+//		double desc = 30.0;
+//		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
+//		
+//		if(carrito!=null) {
+//        	for (Producto p: carrito.keySet()) {
+//        		if(total>200.0)
+//            	total+=(p.getPrecio()*carrito.get(p))-desc/100;
+//        	}
+//        	return total;
+//		}
+//		
+//		return 0.0;
+//	}
 	
-	public double aplicarDescuentoCompraGrande() {
-		double total=carritoServicio.totalCarrito();
-		double desc = 30.0;
+	//Método que calcula el total aplicando las reglas de negocio
+	public double calcularTotalConLogicaNegocio() {
+		double total= 0.0;
+		double desc = 0.0;
 		Map <Producto,Integer> carrito=carritoServicio.getProductsInCart();
-		
-		if(carrito!=null) {
+		/*Voy a aplicar la lógica de negocio que si compra dos productos iguales 
+		 se le aplicará un descuento del 10% y si realiza una compra del más de 100 euros se
+		 le aplicará un descuento del 30%*/
+
         	for (Producto p: carrito.keySet()) {
-        		if(total>200.0)
-            	total+=(p.getPrecio()*carrito.get(p))-desc/100;
+        		if(carrito.get(p)>1) {
+        			desc=10.0;
+            		return total+=(p.getPrecio()*carrito.get(p))-desc/100;
+
+        		}else if(total>200) {
+        			desc=30.0;
+        			return total+=(p.getPrecio()*carrito.get(p))-desc/100;
+        		}else {
+        			return carritoServicio.totalCarrito();
+        		}
         	}
+        	
         	return total;
 		}
-		
-		return 0.0;
-	}
 	
 	public void comprarCantidadStock() {
 
@@ -62,6 +87,17 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
     			carrito.remove(p, 1);
     		}
     	}
+	}
+	
+	public boolean impedirCompra() {
+		boolean stockNegativo = false;
+		Map<Producto, Integer> carrito = carritoServicio.getProductsInCart();
+		for (Producto p : carrito.keySet()) {
+			if(p.getCantidadStock()>carrito.get(p)) {
+				stockNegativo = true;
+			}
+		}
+		return stockNegativo;
 	}
 	
 //	public void checkoutVenta(Map<Producto, Integer> carrito) {
