@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
+import java.time.LocalDate;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.salesianostriana.dam.estanshop.modelo.LineaVenta;
 import com.salesianostriana.dam.estanshop.modelo.Producto;
+import com.salesianostriana.dam.estanshop.modelo.Venta;
 import com.salesianostriana.dam.estanshop.servicio.CarritoServicio;
+import com.salesianostriana.dam.estanshop.servicio.LineaVentaServicio;
 import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
 import com.salesianostriana.dam.estanshop.servicio.VentaServicio;
 
@@ -26,6 +31,8 @@ public class VentaController {
 	@Autowired
 	private ProductoServicio productoServicio;
 	
+	@Autowired
+	private LineaVentaServicio lineaVentaServicio;
 	
 	@GetMapping ("private/cesta")
 	public String controladorCarrito(Model model) {
@@ -76,8 +83,10 @@ public class VentaController {
 	    }
 
 	    
-//	    @GetMapping ("/checkout/{id}")
-//	    public String checkoutCarrito(@PathVariable("id") Map<Producto, Integer> carrito,  Model model) {
+//	    @GetMapping ("/checkout")
+//	    public String checkoutCarrito(Map<Producto, Integer> carrito,  Venta venta) {
+//	    	
+//	    	ventaServicio.save(venta);
 //	    	
 //	    	for (Producto p: carrito.keySet()) {
 //	    		
@@ -90,12 +99,13 @@ public class VentaController {
 //							    	.build())
 //						.build();
 //	    	lineaVentaServicio.save(lv);
-//
+//	    	lv.addToVenta(venta);
+//	    	
 //			}
 //	    	
 //	    	carrito.clear();
 //	    	
-//	    	return "redirect:/private/cesta";
+//	    	return "redirect:/private/prod";
 //	    }
 	    
 

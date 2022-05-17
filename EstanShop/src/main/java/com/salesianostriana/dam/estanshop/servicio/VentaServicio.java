@@ -99,14 +99,4 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 		}
 		return stockNegativo;
 	}
-	
-//	public void checkoutVenta(Map<Producto, Integer> carrito) {
-//		Venta venta = ventaRepository.save(new Venta());
-//		for (Producto p : carrito.keySet()) {
-//			
-////			LineaVenta lv = new LineaVenta(p.getId(), p, carrito.get(p), carritoServicio.totalCarrito(), venta);
-//		}
-//		carrito.clear();
-//	}
-//	
 }
