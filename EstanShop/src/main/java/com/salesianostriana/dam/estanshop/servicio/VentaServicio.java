@@ -20,7 +20,7 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 	
 	/*LÓGICAS DE NEGOCIO*/
 	
-	//Metodo que calcular el precio del carrito
+	//Metodo que calcular el precio del carrito.
 	public double calcularTotalCarrito() {
     	
     	Map <Producto,Integer> carrito= carritoServicio.getProductsInCart();
@@ -36,7 +36,7 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
     	return 0.0;
     }
 	
-	//Método que calcula el total aplicando el descuento por una compra superior a 200 euros
+	//Método que calcula el total aplicando el descuento por una compra superior a 200 euros.
 	public double calcularTotalCarritoCompraGrande() {
 		double total= calcularTotalCarrito();
 		double desc = 25.0;

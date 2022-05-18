@@ -79,8 +79,5 @@ public class VentaController {
 	    	return "redirect:/private/cesta";
 	    }
 	    
-	    
-
-	    
 	
 }

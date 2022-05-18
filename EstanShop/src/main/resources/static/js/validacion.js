@@ -2,19 +2,34 @@ document.getElementById("nombre").addEventListener("blur",convertirMayusculas);
 document.getElementById("precio").addEventListener("blur",comprobarPrecio);
 document.getElementById("fechaAgregacion").addEventListener("blur",comprobarFecha);
 document.getElementById("stock").addEventListener("blur",comprobarCantidad);
+document.getElementById("descripcion").addEventListener("blur",comprobarDescripcion);
 
 function comprobarFormulario(){
     let resultado = false;
              
-        resultado = convertirMayusculas()&& 
-                 comprobarPrecio()&&
-                 comprobarFecha()&&
-                 comprobarCantidad();
+        resultado =  convertirMayusculas()&& 
+                comprobarPrecio()&&
+                comprobarFecha()&&
+                comprobarDescripcion()&&
+                comprobarCantidad();
 
     formulario.enviar.className = resultado?"btn bg-success w-100 fs-5 text-white":"btn bg-danger w-100 fs-5 text-white";
 
     return resultado;
 }
+
+//function comprobarRutaImg(){
+//	let ruta = formulario.imagen;
+//	let resultado = ruta.value!=="";
+//
+//	if(resultado){
+//		let partesruta = ruta.value.split('https://');
+//		resultado = partesruta.length==2;	
+//	}
+//	modificarApariencia(ruta,resultado);
+//	return resultado;
+//}
+
 function convertirMayusculas(){
     let campoNombre = formulario.nombre;
 
@@ -62,10 +77,9 @@ function comprobarFecha(){
     let resultado = fecha.value!="";
 
     if(resultado){
-        let fechaDate = fecha.valueAsDate;
-		let hoy = new Date();
-
-        resultado = fechaDate.getYear()>=hoy.getYear() && fechaDate.getMonth()>=hoy.getMonth() && fechaDate.getDate()>=hoy.getDate();
+	
+      resultado = Date.parse(fecha.value) > Date.now();
+      
     }
 
     modificarApariencia(fecha, resultado);
@@ -73,16 +87,28 @@ function comprobarFecha(){
     return resultado;
 }
 
+function comprobarDescripcion(){
+    let desc = formulario.descripcion;
+    let resultado = desc.value!=="";
+
+    if(resultado){
+       resultado = desc.value.length<140;
+    }
+
+    modificarApariencia(desc, resultado);
+
+    return resultado;
+
+}
+
 function modificarApariencia(campo, estado){	
 	if(estado){
 		campo.classList.remove("border-danger");
 		campo.classList.add("border-success");
-		//campo.parentNode.nextElementSibling.style.visibility = 'hidden';
 	}
 	else{
 		campo.classList.remove("border-success");
 		campo.classList.add("border-danger");
-		//campo.parentNode.nextElementSibling.style.visibility = 'visible';
 	}
 		
 }

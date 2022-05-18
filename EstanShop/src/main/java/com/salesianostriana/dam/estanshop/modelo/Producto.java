@@ -33,9 +33,7 @@ public class Producto {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaAgregacion;
-	
-	private int cantidadStock;
-	
+		
 	private String descripcion;
 	
 	
