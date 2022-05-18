@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,9 +24,7 @@ public class LineaVenta {
 	private Producto producto;
 	
 	private int cantidad;
-	
-	private double precioFinal; 
-	
+		
 	@ManyToOne
 	private Venta venta;
 	
@@ -38,4 +37,5 @@ public class LineaVenta {
 		venta.getLista().remove(this);
 		this.venta = null;
 	}
+	
 }

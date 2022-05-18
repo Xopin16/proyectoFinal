@@ -39,15 +39,15 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="imagenes/zippo.jpg" th:src="@{/img/zippo.jpg}"
-					alt="Los Angeles" class="d-block" style="width: 100%">
+					alt="carrisel de mecheros" class="d-block" style="width: 100%">
 			</div>
 			<div class="carousel-item">
 				<img src="imagenes/shisha.jpg" th:src="@{/img/shisha.jpg}"
-					alt="Chicago" class="d-block" style="width: 100%">
+					alt="carrusle de cachimbas" class="d-block" style="width: 100%">
 			</div>
 			<div class="carousel-item">
 				<img src="imagenes/cenicero.jpg" th:src="@{/img/cenicero.jpg}"
-					alt="New York" class="d-block" style="width: 100%">
+					alt="carrusel de ceniceros" class="d-block" style="width: 100%">
 			</div>
 		</div>
 
@@ -87,7 +87,7 @@
 							<img
 								th:src="${not (#strings.isEmpty(producto.rutaImg))} 
 								              ? ${producto.rutaImg} : 'http://placehold.it/48x48'"
-								alt="" width="100" height="100">
+								th:alt="'IMAGEN DE' + ${producto.nombre}" width="100" height="100">
 							<div class="ps-3">
 								<h6 class="m-0" th:text="${producto.nombre}">Nombre</h6>
 								<p class="m-0" th:text="${producto.tipoProd}">Tipo producto</p>

@@ -1,7 +1,10 @@
 package com.salesianostriana.dam.estanshop.servicio;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +13,26 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.salesianostriana.dam.estanshop.modelo.LineaVenta;
 import com.salesianostriana.dam.estanshop.modelo.Producto;
+import com.salesianostriana.dam.estanshop.modelo.Venta;
 import com.salesianostriana.dam.estanshop.repositorio.ProductoRepository;
 
 @Service
 @Scope (value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CarritoServicio {
-
+	
+	@Autowired
 	private ProductoRepository productoRepository;
+	
+	@Autowired
+	private VentaServicio ventaServicio;
+	
+	@Autowired
+	private LineaVentaServicio lineaVentaServicio;
 	
 	private Map<Producto, Integer> products = new HashMap <> ();
 	
-	@Autowired
 	
 	public CarritoServicio (ProductoRepository productorepository) {
 		this.productoRepository=productorepository;
@@ -50,18 +61,36 @@ public class CarritoServicio {
     public Map<Producto, Integer> getProductsInCart() {
         return Collections.unmodifiableMap(products);
     }
-	
-	public double totalCarrito () {
+    
+    public void checkoutCarrito() {
     	
-    	Map <Producto,Integer> carrito= getProductsInCart();
-    	double total=0.0;
-    	if (carrito !=null) {
-        	for (Producto p: carrito.keySet()) {
-        		total+=p.getPrecio()*carrito.get(p);
-        	}
-        	return total;
-    	}
+    	LineaVenta lv;
+    	List<LineaVenta> lista = new ArrayList<LineaVenta>();
+    	Venta venta;
     	
-    	return 0.0;
+    	for (Map.Entry<Producto , Integer> carrito : products.entrySet()) {
+    		
+    		lv= LineaVenta.builder()
+			    		.producto(carrito.getKey())
+			    		.cantidad(carrito.getValue())
+			    		.build();
+    		lista.add(lv);
+    		
+		}
+    	
+    	venta = Venta.builder()
+    			.precioFinal(ventaServicio.calcularTotalConIva())
+    			.fechaVenta(LocalDate.now())
+    			.build();
+    	
+    	ventaServicio.save(venta);
+    	lista.stream()
+    	.forEach(linea -> {linea.addToVenta(venta);
+    							lineaVentaServicio.save(linea);
+    							});
+    	productoRepository.flush();
+    	products.clear();
     }
+    
+  
 }

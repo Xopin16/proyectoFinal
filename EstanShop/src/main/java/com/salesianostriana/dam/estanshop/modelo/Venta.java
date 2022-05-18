@@ -25,12 +25,9 @@ public class Venta {
 	@Id @GeneratedValue
 	private long id;
 	
-	private LocalDate fechaVenta;
-	
-	private int cantidadProd;
-	
 	private double precioFinal;
 	
+	private LocalDate fechaVenta;
 	
 	@Builder.Default
 	@ToString.Exclude

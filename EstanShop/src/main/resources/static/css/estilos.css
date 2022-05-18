@@ -50,6 +50,9 @@ header{
      
  }
 
+#oferta{
+	font-family: 'miFuente',Verdana, Geneva, Tahoma, sans-serif;
+}
 .carousel-inner {
     max-height:30rem !important;
 }

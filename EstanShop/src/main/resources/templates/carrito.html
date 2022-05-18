@@ -49,7 +49,7 @@
                              ? ${element.key.rutaImg} : 'http://placehold.it/48x48'"
 								class="img-responsive" alt="imagen del producto" /></td>
 							<td th:text="${element.key.nombre}">Mark</td>
-							<td th:text="${element.key.precio + '€'}">Otto</td>
+							<td th:text="${'€' + #numbers.formatDecimal(element.key.precio, 1, 2)}">Otto</td>
 							<td th:text="${element.value}">@mdo</td>
 							<td th:text="${element.key.precio * element.value + '€'}">Mark</td>
 							<td><a href="#" th:href="@{/borrarProducto/{id}(id=${element.key.id})}"><img
@@ -60,11 +60,11 @@
 				<div
 					class="d-flex justify-content-between fs-5 fw-bold px-3 border-bottom">
 					<p>
-						Precio total = <span th:text="${total_carrito + '€'}">3€</span>
+						Precio total = <span th:text="${'€' + #numbers.formatDecimal(total_carrito, 1, 2)}">3€</span>
 					</p>
-					<a th:href="@{/private/prod}"><button class="btn btn-dark">Seguir
+					<a th:href="@{/private/prod}"><button class="btn btn-secondary">Seguir
 							comprando</button></a>
-					<a th:href="@{/checkout}"><button class="btn btn-dark">Checkout</button>
+					<a th:href="@{/checkout}"><button class="btn btn-success">Checkout</button>
 					</a>
 				</div>
 			</div>

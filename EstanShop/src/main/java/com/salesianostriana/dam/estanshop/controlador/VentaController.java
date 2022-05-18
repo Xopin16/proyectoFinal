@@ -30,10 +30,7 @@ public class VentaController {
 	
 	@Autowired
 	private ProductoServicio productoServicio;
-	
-	@Autowired
-	private LineaVentaServicio lineaVentaServicio;
-	
+		
 	@GetMapping ("private/cesta")
 	public String controladorCarrito(Model model) {
     	if (model.addAttribute("productos",carritoServicio.getProductsInCart()) == null)
@@ -71,42 +68,17 @@ public class VentaController {
 	    
 	    @ModelAttribute ("total_carrito")
 	    public Double calcularPrecioFinal() {
-	    	return carritoServicio.totalCarrito();
+	    	return ventaServicio.calcularTotalConIva();
 	    	
-	    }
-	    
-	    @ModelAttribute ("compra_fallida")
-	    public String mostrarCompraFallida(Model model) {
-	    	model.addAttribute("fallo", ventaServicio.impedirCompra());
-	    	
-	    	return "productos";
 	    }
 
+	    @GetMapping ("/checkout")
+	    public String guardarVenta(Model model) {
+	    	carritoServicio.checkoutCarrito();
+	    	
+	    	return "redirect:/private/cesta";
+	    }
 	    
-//	    @GetMapping ("/checkout")
-//	    public String checkoutCarrito(Map<Producto, Integer> carrito,  Venta venta) {
-//	    	
-//	    	ventaServicio.save(venta);
-//	    	
-//	    	for (Producto p: carrito.keySet()) {
-//	    		
-//	    	LineaVenta lv =	LineaVenta.builder()
-//						.producto(p)
-//						.cantidad(carrito.get(p))
-//						.venta(Venta.builder()
-//							    	.fechaVenta(LocalDate.now())
-//							    	.precioFinal(carritoServicio.totalCarrito())
-//							    	.build())
-//						.build();
-//	    	lineaVentaServicio.save(lv);
-//	    	lv.addToVenta(venta);
-//	    	
-//			}
-//	    	
-//	    	carrito.clear();
-//	    	
-//	    	return "redirect:/private/prod";
-//	    }
 	    
 
 	    

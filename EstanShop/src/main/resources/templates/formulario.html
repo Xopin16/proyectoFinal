@@ -2,24 +2,18 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/estilos.css"
-	th:href="@{/css/estilos.css}">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	    <script type="text/javascript" src="validacion.js" th:src="@{/js/validacion.js}" defer></script>
-<title>Formulario de registro</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="validacion.js" th:src="@{/js/validacion.js}" defer></script>
+	<title>Formulario de registro</title>
 </head>
 
 <body>
@@ -32,8 +26,7 @@
 	<main>
 		<section id="contacto" class="container mb-lg-0 p-5">
 
-			<div class="container border border-primary border-2 m-auto"
-				style="max-width: 1000px" id="contenedor">
+			<div class="container border border-primary border-2 m-auto" style="max-width: 1000px" id="contenedor">
 				<div class="text-center justify-content-start" id="titulo">
 					<div>
 						<h4 class="border-bottom border-3 border-primary mb-4">AGREGAR
@@ -42,66 +35,61 @@
 				</div>
 
 				<form id="formulario" data-netlify="true" action="#" method="POST"
-					th:action="${producto.id != 0} ? @{/editar/submit} : @{/form/submit}"
-					th:object="${producto}" onsubmit="return comprobarFormulario()">
-					<input th:if="${producto.id != 0}" type="hidden" name="id"
-						th:field="*{id}" />
+					th:action="${producto.id != 0} ? @{/editar/submit} : @{/form/submit}" th:object="${producto}"
+					onsubmit="return comprobarFormulario()">
+					<input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
 
 					<div class="mb-3">
 						<label for="imagen" class="form-label">Indique la ruta de
-							la imagen</label> <input type="text" class="form-control" id="imagen"
-							name="imagen" th:field="*{rutaImg}" placeholder="http://...">
+							la imagen</label> <input type="text" class="form-control" id="imagen" name="imagen"
+							th:field="*{rutaImg}" placeholder="http://...">
 					</div>
 					<div class="mb-3">
 						<label for="nombre" class="form-label">Indique el nombre
-							del producto</label> <input type="text" class="form-control" id="nombre"
-							name="nombre" th:field="*{nombre}" placeholder="Ej: Vaped">
+							del producto</label> <input type="text" class="form-control" id="nombre" name="nombre"
+							th:field="*{nombre}" placeholder="Ej: Vaped">
 					</div>
 
 					<div class="mb-3">
 						<label for="tipo" class="form-label">Indique a qué
-							categoría pertenece</label><br> <input type="radio" name="tipo"
-							th:field="*{tipoProd}" id="tipo" value="Mechero"><span
-							class="mx-2">Mechero</span><br> <input type="radio"
-							name="tipo" th:field="*{tipoProd}" id="tipo"
-							value="Tabaco de liar"><span class="mx-2">Tabaco
-							de liar</span><br> <input type="radio" name="tipo"
-							th:field="*{tipoProd}" id="tipo" value="Vaped"><span
-							class="mx-2">Vaped</span><br> <input type="radio"
-							name="tipo" th:field="*{tipoProd}" id="tipo" value="Otro"><span
-							class="mx-2">Otro</span><br>
+							categoría pertenece</label><br> <input type="radio" name="tipo" th:field="*{tipoProd}"
+							id="tipo" value="Mechero"><span class="mx-2">Mechero</span><br> <input type="radio"
+							name="tipo" th:field="*{tipoProd}" id="tipo" value="Tabaco de liar"><span
+							class="mx-2">Tabaco
+							de liar</span><br> <input type="radio" name="tipo" th:field="*{tipoProd}" id="tipo"
+							value="Cachimbas"><span class="mx-2">Cachimbas</span><br><input type="radio" name="tipo"
+							th:field="*{tipoProd}" id="tipo" value="Vaped"><span class="mx-2">Vaped</span><br> <input
+							type="radio" name="tipo" th:field="*{tipoProd}" id="tipo" value="Cenicero"><span
+							class="mx-2">Cenicero</span><br>
 					</div>
 
 					<div class="mb-3">
 						<label for="precio" class="form-label">Indique el precio
-							del producto</label> <input type="text" class="form-control" id="precio"
-							name="precio" placeholder="Ej: 10,50€" th:field="*{precio}">
+							del producto</label> <input type="text" class="form-control" id="precio" name="precio"
+							placeholder="Ej: 10,50€" th:field="*{precio}">
 					</div>
 
 					<div class="mb-3">
 						<label for="stock" class="form-label">Indique cuantos
-							productos están en stock</label><br> <input type="number"
-							class="form-control" id="stock" name="stock"
-							th:field="*{cantidadStock}" placeholder="Ej: 15">
+							productos están en stock</label><br> <input type="number" class="form-control" id="stock"
+							name="stock" th:field="*{cantidadStock}" placeholder="Ej: 15">
 					</div>
 
 					<div class="mb-3">
 						<label for="fechaAgregacion" class="form-label">Indique la
-							fecha de agreacion del producto</label><br> <input type="date"
-							class="form-control" id="fechaAgregacion" name="fechaAgregacion"
-							th:field="*{fechaAgregacion}">
+							fecha de agreacion del producto</label><br> <input type="date" class="form-control"
+							id="fechaAgregacion" name="fechaAgregacion" th:field="*{fechaAgregacion}">
 					</div>
 
 					<div class="mb-3">
 						<label for="stock" class="form-label">Introduzca una breve
 							descripción del producto</label>
-						<textarea class="form-control" name="descripcion" id="descripcion"
-							rows="4" th:field="*{descripcion}" placeholder="Descripcion"></textarea>
+						<textarea class="form-control" name="descripcion" id="descripcion" rows="4"
+							th:field="*{descripcion}" placeholder="Descripcion"></textarea>
 					</div>
 
 					<div class="mb-3">
-						<button type="submit" id="enviar"
-							class="btn bg-primary w-100 fs-5 text-white">Guardar</button>
+						<button type="submit" id="enviar" class="btn bg-primary w-100 fs-5 text-white">Guardar</button>
 					</div>
 				</form>
 			</div>
