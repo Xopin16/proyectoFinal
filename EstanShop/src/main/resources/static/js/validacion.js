@@ -77,8 +77,8 @@ function comprobarFecha(){
     let resultado = fecha.value!="";
 
     if(resultado){
-	
-      resultado = Date.parse(fecha.value) > Date.now();
+
+        resultado = Date.parse(fecha.value) >= Date.now();
       
     }
 
