@@ -24,31 +24,27 @@
 	<!--CONTENIDO-->
 	<main>
 		<section class="container min-vh-100">
-			</form>
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10 table-responsive">
-					<table class="table table-hover text-center">
-						<thead>
-							<tr>
-								<th scope="col">Id de la venta</th>				
-								<th scope="col">Precio final</th>
-								<th scope="col">Fecha de venta</th>
-								<th scope="col">Cliente</th>
-								<th scope="col">Detalles</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="venta : ${historico}">
-								<td th:text="${venta.id}">Otto</td>
-								<td th:text="${'€' + #numbers.formatDecimal(venta.precioFinal, 1, 2)}">Otto</td>
-								<td th:text="${venta.fechaVenta}">@mdo</td>
-								<td th:text="${venta.cliente}">Otto</td>
-							</tr>
-							<tr th:each="lista: ${detalles}">
-								<td><a th:href="@{/detalles/{id}(id=${detalles.id})}">Detalles</a></td>
-							</tr>
-						</tbody>
-					</table>
+					<table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio Unitario</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody th:remove="all-but-first">
+                            <tr th:each="lista : ${detalles}">
+								<td th:text="${lista.producto.precio}">Mark</td>
+                                <td th:text="${lista.cantidad}">Otto</td>
+                                <td th:text="${lista.producto.descripcion}">Mark</td>
+                                <td th:text="${lista.cantidad * lista.producto.precio + '€'}">@mdo</td>
+                            </tr>
+                        </tbody>
+                    </table>
 				</div>
 			</div>
 		</section>

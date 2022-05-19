@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <!-- Required meta tags -->
@@ -68,6 +68,7 @@
 		<section
 			class="d-flex flex-column justify-content-center align-items-center pt-5 text-center w-50 m-auto"
 			id="estanshop">
+			<p sec:authorize="isAuthenticated()" th:text="${'Bienvenido, ' + usuario}" class="text-dark fw-bold fs-2 p-4" >Nombre de usuario</p>
 			<h1 class="p-3 fs-2">
 				ESTANCO ONLINE <span class="fs-1 text-danger">"ESTANSHOP"</span>
 			</h1>

@@ -30,7 +30,7 @@ public class UsuarioRepo {
 		usuarios = List.of(
 				Usuario.builder()
 					.username("luismi")
-					.password("12345678")
+					.password("luismi")
 					.role("ADMIN")
 					.build()
 				,
@@ -41,8 +41,8 @@ public class UsuarioRepo {
 				.build()
 				,
 				Usuario.builder()
-				.username("pedro")
-				.password("pedro")
+				.username("jose")
+				.password("jose")
 				.role("USER")
 				.build()
 				,
@@ -54,7 +54,7 @@ public class UsuarioRepo {
 				,
 				Usuario.builder()
 				.username("user")
-				.password("user")
+				.password("1234")
 				.role("USER")
 				.build()
 				

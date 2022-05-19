@@ -83,12 +83,13 @@ public class CarritoServicio {
     			.fechaVenta(LocalDate.now())
     			.cliente(nombreUsuario)
     			.build();
-    	
-    	ventaServicio.save(venta);
-    	lista.stream()
-    	.forEach(linea -> {linea.addToVenta(venta);
-    							lineaVentaServicio.save(linea);
-    							});
+    	if(!lista.isEmpty()) {
+        	ventaServicio.save(venta);
+        	lista.stream()
+        	.forEach(linea -> {linea.addToVenta(venta);
+        							lineaVentaServicio.save(linea);
+        							});
+    	}
     	productoRepository.flush();
     	products.clear();
     }
