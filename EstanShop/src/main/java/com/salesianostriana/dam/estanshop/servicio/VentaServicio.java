@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.estanshop.servicio;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 	@Autowired
 	private CarritoServicio carritoServicio;
 		
+	
+	public List<Venta> mostrarVentaUsuario(String nombre){
+		return repositorio.obtenerVentas(nombre);
+	}
 	
 	/*LÓGICAS DE NEGOCIO*/
 	
@@ -56,5 +61,7 @@ ServicioBaseImpl<Venta, Long, VentaRepository>{
 		return calcularTotalCarritoCompraGrande()+calcularTotalCarritoCompraGrande()*iva/100;
 				
 	}
+	
+	
 	
 }

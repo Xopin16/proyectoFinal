@@ -29,6 +29,8 @@ public class Venta {
 	
 	private LocalDate fechaVenta;
 	
+	private String cliente;
+	
 	@Builder.Default
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

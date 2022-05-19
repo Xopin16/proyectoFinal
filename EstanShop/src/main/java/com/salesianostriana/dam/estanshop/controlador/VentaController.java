@@ -1,21 +1,19 @@
 package com.salesianostriana.dam.estanshop.controlador;
 
-import java.time.LocalDate;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.salesianostriana.dam.estanshop.modelo.LineaVenta;
 import com.salesianostriana.dam.estanshop.modelo.Producto;
-import com.salesianostriana.dam.estanshop.modelo.Venta;
 import com.salesianostriana.dam.estanshop.servicio.CarritoServicio;
-import com.salesianostriana.dam.estanshop.servicio.LineaVentaServicio;
 import com.salesianostriana.dam.estanshop.servicio.ProductoServicio;
 import com.salesianostriana.dam.estanshop.servicio.VentaServicio;
 
@@ -73,11 +71,21 @@ public class VentaController {
 	    }
 
 	    @GetMapping ("/checkout")
-	    public String guardarVenta(Model model) {
-	    	carritoServicio.checkoutCarrito();
+	    public String guardarVenta(@AuthenticationPrincipal UserDetails user) {
+	    	carritoServicio.checkoutCarrito(user.getUsername());
 	    	
 	    	return "redirect:/private/cesta";
 	    }
 	    
-	
+	    @GetMapping ("admin/historico")
+	    public String mostrarHistorico(Model model) {
+	    	model.addAttribute("historico", ventaServicio.findAll());
+	    	return "historico";
+	    }
+	    
+	    @GetMapping ("private/historico")
+	    public String mostrarVentasUsuario(@AuthenticationPrincipal UserDetails user, Model model) {
+	    	model.addAttribute("historico", ventaServicio.mostrarVentaUsuario(user.getUsername()));
+	    	return "historico";
+	    }
 }

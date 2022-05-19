@@ -66,6 +66,10 @@
 							comprando</button></a>
 					<a th:href="@{/checkout}"><button class="btn btn-success">Checkout</button>
 					</a>
+					<a th:href="@{/admin/historico}" sec:authorize="hasRole('ROLE_ADMIN')"><button class="btn btn-success">Factura</button>
+					</a>
+					<a th:href="@{/private/historico}"><button class="btn btn-success">FacturaU</button>
+					</a>
 				</div>
 			</div>
 		</section>

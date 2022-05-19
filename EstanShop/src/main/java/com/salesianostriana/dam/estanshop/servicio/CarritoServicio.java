@@ -62,7 +62,7 @@ public class CarritoServicio {
         return Collections.unmodifiableMap(products);
     }
     
-    public void checkoutCarrito() {
+    public void checkoutCarrito(String nombreUsuario) {
     	
     	LineaVenta lv;
     	List<LineaVenta> lista = new ArrayList<LineaVenta>();
@@ -81,6 +81,7 @@ public class CarritoServicio {
     	venta = Venta.builder()
     			.precioFinal(ventaServicio.calcularTotalConIva())
     			.fechaVenta(LocalDate.now())
+    			.cliente(nombreUsuario)
     			.build();
     	
     	ventaServicio.save(venta);
@@ -91,6 +92,5 @@ public class CarritoServicio {
     	productoRepository.flush();
     	products.clear();
     }
-    
   
 }
