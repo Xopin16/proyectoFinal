@@ -27,7 +27,7 @@
 			<h3 class="text-center text-dark p-3" id="oferta">¡OFERTÓN! 30% en compras superiores a 200€(Iva incluido)</h3>
 			<form class="container d-flex mt-3 mb-3 w-100" method="GET" th:action="@{/buscar}">
 				<button class="btn bg-danger btn-primary-outline-success text-white" type="submit">Buscar</button>
-				<input class="form-control w-25" type="text" placeholder="Buscar producto por nombre"
+				<input class="form-control w-25" type="search" placeholder="Buscar producto por nombre"
 					name="nombre" id="nombre" th:value="${param.nombre}">
 			</form>
 			<div class="row">

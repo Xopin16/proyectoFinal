@@ -36,7 +36,13 @@ public class UsuarioRepo {
 				,
 				Usuario.builder()
 				.username("angel")
-				.password("87654321")
+				.password("angel")
+				.role("USER")
+				.build()
+				,
+				Usuario.builder()
+				.username("pedro")
+				.password("pedro")
 				.role("USER")
 				.build()
 				,
@@ -51,7 +57,6 @@ public class UsuarioRepo {
 				.password("user")
 				.role("USER")
 				.build()
-				
 				
 				);
 				

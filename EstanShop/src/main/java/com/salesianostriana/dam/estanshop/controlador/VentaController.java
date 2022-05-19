@@ -74,7 +74,7 @@ public class VentaController {
 	    public String guardarVenta(@AuthenticationPrincipal UserDetails user) {
 	    	carritoServicio.checkoutCarrito(user.getUsername());
 	    	
-	    	return "redirect:/private/cesta";
+	    	return "redirect:/private/historico";
 	    }
 	    
 	    @GetMapping ("admin/historico")

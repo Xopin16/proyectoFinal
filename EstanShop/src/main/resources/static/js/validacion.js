@@ -77,7 +77,7 @@ function comprobarFecha(){
     let resultado = fecha.value!="";
 
     if(resultado){
-
+	
         resultado = Date.parse(fecha.value) >= Date.now();
       
     }
@@ -105,10 +105,12 @@ function modificarApariencia(campo, estado){
 	if(estado){
 		campo.classList.remove("border-danger");
 		campo.classList.add("border-success");
+		campo.parentNode.previousElementSibling.style.visibility = 'hidden';
 	}
 	else{
 		campo.classList.remove("border-success");
 		campo.classList.add("border-danger");
+		campo.parentNode.previousElementSibling.style.visibility = 'visible';
 	}
 		
 }

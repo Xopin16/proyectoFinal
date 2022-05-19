@@ -80,6 +80,9 @@ footer p{
   
 }
 
+.mensajeError{
+	visibility:hidden;
+}
 
 #contenedor{
     padding-top: 5%;

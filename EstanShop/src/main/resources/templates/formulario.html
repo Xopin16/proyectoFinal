@@ -45,6 +45,7 @@
 							la imagen</label> <input type="text" class="form-control" id="imagen" name="imagen"
 							th:field="*{rutaImg}" placeholder="http://...">
 					</div>
+					<div class="mensajeError text-danger" id="errorNombre" >Nombre incorrecto</div>
 					<div class="mb-3">
 						<label for="nombre" class="form-label">Indique el nombre
 							del producto</label> <input type="text" class="form-control" id="nombre" name="nombre"
@@ -63,14 +64,15 @@
 							type="radio" name="tipo" th:field="*{tipoProd}" id="tipo" value="Cenicero"><span
 							class="mx-2">Cenicero</span><br>
 					</div>
-
+					
+					<div class="mensajeError text-danger" id="errorPrecio" >El precio debe ser un valor númerico mayor que 0.</div>
 					<div class="mb-3">
 						<label for="precio" class="form-label">Indique el precio
 							del producto</label> <input type="text" class="form-control" id="precio" name="precio"
 							placeholder="Ej: 10,50€" th:field="*{precio}">
 					</div>
 
-
+					<div class="mensajeError text-danger" id="errorFecha" >No puedes agregar un producto en un dia anterior a hoy</div>
 					<div class="mb-3">
 						<label for="fechaAgregacion" class="form-label">Indique la
 							fecha de agreacion del producto</label><br> <input type="date" class="form-control"
@@ -83,6 +85,7 @@
 						});
 					</script>
 
+					<div class="mensajeError text-danger" id="errorNombre" >Máximo 140 carácteres</div>
 					<div class="mb-3">
 						<label for="stock" class="form-label">Introduzca una breve
 							descripción del producto</label>
