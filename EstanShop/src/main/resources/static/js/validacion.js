@@ -17,17 +17,6 @@ function comprobarFormulario(){
     return resultado;
 }
 
-//function comprobarRutaImg(){
-//	let ruta = formulario.imagen;
-//	let resultado = ruta.value!=="";
-//
-//	if(resultado){
-//		let partesruta = ruta.value.split('https://');
-//		resultado = partesruta.length==2;	
-//	}
-//	modificarApariencia(ruta,resultado);
-//	return resultado;
-//}
 
 function convertirMayusculas(){
     let campoNombre = formulario.nombre;
@@ -56,32 +45,23 @@ function comprobarPrecio(){
     return resultado;
 }   
 
-//function comprobarCantidad(){
-  //  let cantidad = formulario.stock;
-
-//    let resultado = cantidad.value!=="";
-//
-  //  if(resultado){
-    //    resultado = cantidad.value>=0;
-    //}
-
-    //modificarApariencia(cantidad, resultado);
-//
-  //  return resultado;
-//}
 
 function comprobarFecha(){
-    let fecha = formulario.fechaAgregacion;
+    let campoFecha = formulario.fechaAgregacion;
 
-    let resultado = fecha.value!="";
+    let resultado = campoFecha.value!="";
 
     if(resultado){
+	let fechaDate= campoFecha.valueAsDate; 
+	let hoy = new Date();
 	
-        resultado = Date.parse(fecha.value) >= Date.now();
-      
+	resultado = fechaDate.getYear()>=hoy.getYear() && fechaDate.getMonth()>=hoy.getMonth() && fechaDate.getDate() >= hoy.getDate() ||
+	fechaDate.getYear()>hoy.getYear() && fechaDate.getMonth()<=hoy.getMonth() && fechaDate.getDate() <= hoy.getDate() ||
+	fechaDate.getYear()>=hoy.getYear() && fechaDate.getMonth()>hoy.getMonth() && fechaDate.getDate() <= hoy.getDate();
+
     }
 
-    modificarApariencia(fecha, resultado);
+    modificarApariencia(campoFecha, resultado);
 
     return resultado;
 }

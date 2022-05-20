@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="validacion.js" th:src="@{/js/validacion.js}" defer></script>
-	<script th:src="@{/js/datedropper-javascript.js}"></script>
 	<title>Formulario de registro</title>
 </head>
 
@@ -72,18 +71,12 @@
 							placeholder="Ej: 10,50€" th:field="*{precio}">
 					</div>
 
-					<div class="mensajeError text-danger" id="errorFecha" >Solo se agregrán productos los días posteriores al actual.</div>
+					<div class="mensajeError text-danger" id="errorFecha" >No puedes agregar productos los días anteriores a hoy.</div>
 					<div class="mb-3">
 						<label for="fechaAgregacion" class="form-label">Indique la
 							fecha de agreacion del producto</label><br> <input type="date" class="form-control"
 							id="fechaAgregacion" name="fechaAgregacion" th:field="*{fechaAgregacion}">
 					</div>
-					
-					<script>
-						new dateDropper({
-						  selector: 'input[type="date"]'
-						});
-					</script>
 
 					<div class="mensajeError text-danger" id="errorNombre" >Campo obligatorio, máximo 140 carácteres</div>
 					<div class="mb-3">
