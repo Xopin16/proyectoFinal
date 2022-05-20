@@ -5,6 +5,8 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="En esta página mostraremos las diferentes ventas y compras realizadas en nuestra aplicacion.">
+	<meta name="author" content="Jose Ignacio Rivas">
 
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,7 +32,7 @@
 					<table class="table table-hover text-center">
 						<thead>
 							<tr>
-								<th scope="col">Id de la venta</th>				
+								<th scope="col">Id de la venta</th>
 								<th scope="col">Precio final</th>
 								<th scope="col">Fecha de venta</th>
 								<th scope="col">Cliente</th>
@@ -43,7 +45,8 @@
 								<td th:text="${'€' + #numbers.formatDecimal(venta.precioFinal, 1, 2)}">Otto</td>
 								<td th:text="${venta.fechaVenta}">@mdo</td>
 								<td th:text="${venta.cliente}">Otto</td>
-								<td><a th:href="@{/detalles/{id}(id=${venta.id})}"><button class="btn btn-info">Detalles</button></a></td>
+								<td><a th:href="@{/detalles/{id}(id=${venta.id})}"><button
+											class="btn btn-info">Detalles</button></a></td>
 							</tr>
 						</tbody>
 					</table>
