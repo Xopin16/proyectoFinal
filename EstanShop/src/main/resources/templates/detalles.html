@@ -26,7 +26,7 @@
 		<section class="container min-vh-100">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10 table-responsive">
-					<table class="table table-hover">
+					<table class="table table-hover text-center">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
@@ -37,11 +37,12 @@
                             </tr>
                         </thead>
                         <tbody th:remove="all-but-first">
-                            <tr th:each="lista : ${detalles}">
-								<td th:text="${lista.producto.precio}">Mark</td>
-                                <td th:text="${lista.cantidad}">Otto</td>
-                                <td th:text="${lista.producto.descripcion}">Mark</td>
-                                <td th:text="${lista.cantidad * lista.producto.precio + '€'}">@mdo</td>
+                            <tr th:each="lineaVenta : ${lista}">
+								<td th:text="${lineaVenta.producto.nombre}">Mark</td>
+								<td th:text="${lineaVenta.producto.precio + '€'}">Mark</td>
+                                <td th:text="${lineaVenta.cantidad}">Otto</td>
+                                <td th:text="${lineaVenta.producto.descripcion}">Mark</td>
+                                <td th:text="${lineaVenta.cantidad * lineaVenta.producto.precio + '€'}">@mdo</td>
                             </tr>
                         </tbody>
                     </table>

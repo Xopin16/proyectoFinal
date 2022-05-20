@@ -43,9 +43,7 @@
 								<td th:text="${'€' + #numbers.formatDecimal(venta.precioFinal, 1, 2)}">Otto</td>
 								<td th:text="${venta.fechaVenta}">@mdo</td>
 								<td th:text="${venta.cliente}">Otto</td>
-							</tr>
-							<tr th:each="lista: ${detalles}">
-								<td><a th:href="@{/detalles/{id}(id=${detalles.id})}">Detalles</a></td>
+								<td><a th:href="@{/detalles/{id}(id=${venta.id})}"><button class="btn btn-info">Detalles</button></a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -1,3 +1,4 @@
+
 package com.salesianostriana.dam.estanshop.modelo;
 
 import java.time.LocalDate;

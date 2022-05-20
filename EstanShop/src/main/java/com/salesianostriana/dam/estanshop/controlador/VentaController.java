@@ -70,6 +70,11 @@ public class VentaController {
 		return ventaServicio.calcularTotalConIva();
 
 	}
+	
+	@ModelAttribute("total_carrito_desc")
+	public Double calcularTotalDescontado() {
+		return ventaServicio.calcularTotalCarritoCompraGrande();
+	}
 
 	@GetMapping("/checkout")
 	public String guardarVenta(@AuthenticationPrincipal UserDetails user) {
@@ -91,13 +96,13 @@ public class VentaController {
 	}
 	
 	@GetMapping("/detalles/{id}")
-	public String mostrarDetalles(@PathVariable("id") long id, Model model, Venta venta) {
+	public String mostrarDetalles(@PathVariable("id") long id, Model model) {
 		
 		Optional<Venta> detalles = ventaServicio.findById(id);
 				
 		if(detalles!=null) {
-			model.addAttribute("detalles", detalles.get());
-			model.addAttribute("lista", ventaServicio.obtenerLista(venta));
+			model.addAttribute("venta", detalles.get());
+			model.addAttribute("lista", ventaServicio.obtenerLista(detalles.get()));
 			return "detalles";
 		}
 		return "redirect:/private/cesta";

@@ -2,23 +2,17 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/estilos.css"
-	th:href="@{/css/estilos.css}">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>Formulario de registro</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<title>Formulario de registro</title>
 </head>
 
 <body>
@@ -44,53 +38,48 @@
 					</thead>
 					<tbody th:remove="all-but-first">
 						<tr th:each="element : ${productos.entrySet()}">
-							<td><img width="100" height="100"
-								th:src="${not (#strings.isEmpty(element.key.rutaImg))} 
-                             ? ${element.key.rutaImg} : 'http://placehold.it/48x48'"
-								class="img-responsive" alt="imagen del producto" /></td>
+							<td><img width="100" height="100" th:src="${not (#strings.isEmpty(element.key.rutaImg))} 
+                             ? ${element.key.rutaImg} : 'http://placehold.it/48x48'" class="img-responsive"
+									alt="imagen del producto" /></td>
 							<td th:text="${element.key.nombre}">Mark</td>
-							<td
-								th:text="${'€' + #numbers.formatDecimal(element.key.precio, 1, 2)}">Otto</td>
+							<td th:text="${'€' + #numbers.formatDecimal(element.key.precio, 1, 2)}">Otto</td>
 							<td th:text="${element.value}">@mdo</td>
 							<td th:text="${element.key.precio * element.value + '€'}">Mark</td>
-							<td><a href="#" class="btn btn-outline-dark"
-								data-bs-toggle="modal" data-bs-target="#myModal"
-								th:attr="data-bs-target='#myModal'+${element.key.id}"><img
-									alt="borrar" th:src="@{/img/borrar.png}"></a>
+							<td><a href="#" class="btn btn-outline-dark" data-bs-toggle="modal"
+									data-bs-target="#myModal" th:attr="data-bs-target='#myModal'+${element.key.id}"><img
+										alt="borrar" th:src="@{/img/borrar.png}"></a>
 
-								<div class="modal" id="myModal" tabindex="-1"
-									th:id="'myModal'+${element.key.id}">
+								<div class="modal" id="myModal" tabindex="-1" th:id="'myModal'+${element.key.id}">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
-												<button type="button" class="btn-close"
-													data-bs-dismiss="modal" aria-label="Close"></button>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
 											</div>
 											<div class="modal-body">¿Estás seguro de que deseas
 												borrarlo?</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-danger"
 													data-bs-dismiss="modal">No</button>
-												<a href="#"
-													th:href="@{/borrarProducto/{id}(id=${element.key.id})}"
+												<a href="#" th:href="@{/borrarProducto/{id}(id=${element.key.id})}"
 													class="btn btn-success">Si</a>
 											</div>
 										</div>
 									</div>
-								</div></td>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
-				<div
-					class="d-flex justify-content-between fs-5 fw-bold px-3 border-bottom">
+				<div class="d-flex justify-content-between fs-5 fw-bold p-3 border-bottom">
 					<p>
-						Precio total = <span
+						PRECIO TOTAL(Descuentos e iva incluidos) = <span
 							th:text="${'€' + #numbers.formatDecimal(total_carrito, 1, 2)}">3€</span>
 					</p>
 					<a th:href="@{/private/prod}"><button class="btn btn-secondary">Seguir
-							comprando</button></a> <a th:href="@{/checkout}"><button
-							class="btn btn-success">Validar Compra</button> </a>
+							comprando</button></a> <a th:href="@{/checkout}"><button class="btn btn-success">Validar
+							Compra</button> </a>
 				</div>
 				<div class="text-start fs-5 fw-bold p-3 border-bottom"><a th:href="@{/private/historico}"><button
 							class="btn btn-secondary">Mostrar compras</button></a></div>

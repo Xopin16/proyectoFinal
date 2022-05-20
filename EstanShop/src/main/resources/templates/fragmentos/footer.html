@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 
 <body>
 
-    <footer class="conteainer-fluid d-flex align-items-center justify-content-evenly" th:fragment="pie" id="pie">
-        <div>
-            <span class="text-white fw-bold">ESTANSHOP</span>
-        </div>
-        <div><span class="text-white fw-bold">C. Condes de Bustillo, 17, 41010 Sevilla </span></div>
-        <div><span class="text-white fw-bold">Desarrollado por Jose Ignacio 1ºDAM</span></div>
-    </footer>
+	<footer class="footer text-center text-light" th:fragment="pie" id="pie">
+		<div class="container">
+			<div class="row">
+
+				<!-- Footer Location -->
+				<div class="col-lg-4 p-5 mb-lg-0">
+					<p class="lead mb-0">C/ Condes de Bustillo, 17
+						<br>41010 Sevilla
+						<br>Tfno: 954 33 14 88
+					</p>
+				</div>
+
+				<!-- Footer Social Icons -->
+				<div class="col-lg-4 p-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">RRSS</h4>
+					<a class="btn btn-light btn-social mx-1" href="https://www.instagram.com/salesianostriana/">
+						<img alt="instagram" th:src="@{/img/logotipo-de-instagram.png}">
+					</a>
+					<a class="btn btn-light btn-social mx-1" href="https://es-es.facebook.com/salesianotriana/">
+						<img alt="facebook" th:src="@{/img/facebook.png}">
+					</a>
+
+				</div>
+
+				<!-- Footer About Text -->
+				<div class="col-lg-4 p-5">
+					<a><h4 class="text-uppercase mb-4">¡TU ESTANCO ONLINE!</h4>
+					<p class="lead mb-0">Los mejores productos para los mejores fumadores</p>
+				</div>
+
+			</div>
+		</div>
+	</footer>
 
 </body>
+
 </html>

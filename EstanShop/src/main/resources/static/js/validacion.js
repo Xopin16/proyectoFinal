@@ -1,7 +1,6 @@
 document.getElementById("nombre").addEventListener("blur",convertirMayusculas);
 document.getElementById("precio").addEventListener("blur",comprobarPrecio);
 document.getElementById("fechaAgregacion").addEventListener("blur",comprobarFecha);
-document.getElementById("stock").addEventListener("blur",comprobarCantidad);
 document.getElementById("descripcion").addEventListener("blur",comprobarDescripcion);
 
 function comprobarFormulario(){
@@ -10,8 +9,8 @@ function comprobarFormulario(){
         resultado =  convertirMayusculas()&& 
                 comprobarPrecio()&&
                 comprobarFecha()&&
-                comprobarDescripcion()&&
-                comprobarCantidad();
+                comprobarDescripcion();
+
 
     formulario.enviar.className = resultado?"btn bg-success w-100 fs-5 text-white":"btn bg-danger w-100 fs-5 text-white";
 
@@ -57,19 +56,19 @@ function comprobarPrecio(){
     return resultado;
 }   
 
-function comprobarCantidad(){
-    let cantidad = formulario.stock;
+//function comprobarCantidad(){
+  //  let cantidad = formulario.stock;
 
-    let resultado = cantidad.value!=="";
+//    let resultado = cantidad.value!=="";
+//
+  //  if(resultado){
+    //    resultado = cantidad.value>=0;
+    //}
 
-    if(resultado){
-        resultado = cantidad.value>=0;
-    }
-
-    modificarApariencia(cantidad, resultado);
-
-    return resultado;
-}
+    //modificarApariencia(cantidad, resultado);
+//
+  //  return resultado;
+//}
 
 function comprobarFecha(){
     let fecha = formulario.fechaAgregacion;
