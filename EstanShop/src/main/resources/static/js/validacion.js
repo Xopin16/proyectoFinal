@@ -71,7 +71,7 @@ function comprobarDescripcion(){
     let resultado = desc.value!=="";
 
     if(resultado){
-       resultado = desc.value.length<140;
+       resultado = desc.value.length<255;
     }
 
     modificarApariencia(desc, resultado);

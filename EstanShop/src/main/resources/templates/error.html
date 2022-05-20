@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Ejemplo de Seguridad - Error</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="Aqui tendremos una pagina que aparecera en caso de error.">
 	<meta name="author" content="Jose Ignacio Rivas">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/estilos.css" th:href="@{/css/estilos.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-    <h1>¡Error!</h1>
-    <p>No tienes privilegios para acceder a esta funcionalidad</p>
-    <a th:href="@{/private/index}">Volver</a>
+    <h1 class="fw-bold text-center fs-1 p-5">ERROR</h1>
+    <p class="text-center">No tienes privilegios necesarios para acceder a esta funcionalidad</p>
+	<a th:href="@{/private/index}" class="p-5" ><span>ATRÁS</span></a>
 </body>
 
 </html>
